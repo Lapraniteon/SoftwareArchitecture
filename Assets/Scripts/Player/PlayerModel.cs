@@ -1,19 +1,31 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerModel : MonoBehaviour
 {
+    [SerializeField] 
+    private PlayerData playerData;
+    private Player player;
+
+    public event Action<Player> onPlayerInit;
+    public event Action<Player> onPlayerXPGained;
+    public event Action<Player> onPlayerLevelUp;
+    
     private NavMeshAgent navMeshAgent;
 
-    [SerializeField] private int currentXP;
-    [SerializeField] private int currentLevel;
-    [SerializeField] private int currentHP;
+    [SerializeField] private TextMeshProUGUI xpText;
+    [SerializeField] private TextMeshProUGUI levelText;
 
     private void Start()
     {
+        player = playerData.CreatePlayer();
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
+        
+        onPlayerInit?.Invoke(player);
     }
 
     public void GoToDestination(Vector3 destination)
@@ -21,10 +33,12 @@ public class PlayerModel : MonoBehaviour
         navMeshAgent.SetDestination(destination);
     }
     
-    public void ObtainXP(EventData eventData)
+    public void OnEnemyKilled(EventData eventData)
     {
         EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
 
-        currentXP += enemyDieEventData.enemy.XP;
+        player.currentXp += enemyDieEventData.enemy.XP;
+        
+        onPlayerXPGained?.Invoke(player);
     }
 }

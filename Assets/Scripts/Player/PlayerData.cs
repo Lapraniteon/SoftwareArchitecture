@@ -8,13 +8,14 @@ using System;
 public class PlayerData : ScriptableObject
 {
     public int maxHP;
-    public int money;
-    public int xp;
+    public int startingMoney;
     public int level;
+
+    public int[] xpRequirementsForNextLevel;
 
     public Player CreatePlayer()
     {
-        return new Player(maxHP, money, xp, level);
+        return new Player(maxHP, startingMoney, level, xpRequirementsForNextLevel);
     }
 }
 
@@ -26,17 +27,21 @@ public class Player
     public int currentHP;
     public int Money => money;
     private int money;
-    public int XP => xp;
-    private int xp;
-    public int Level => Level;
+    public int currentXp;
+    public int Level => level;
     private int level;
+    
+    public int[] XpRequirementsForNextLevel => xpRequirementsForNextLevel;
+    private int[] xpRequirementsForNextLevel;
+    
 
-    public Player(int pMaxHP, int pMoney, int pXP, int pLevel)
+    public Player(int pMaxHP, int pMoney, int pLevel, int[] pXpReqs)
     {
         maxHP = pMaxHP;
         currentHP = pMaxHP;
         money = pMoney;
-        xp = pXP;
+        currentXp = 0;
         level = pLevel;
+        xpRequirementsForNextLevel = pXpReqs;
     }
 }
