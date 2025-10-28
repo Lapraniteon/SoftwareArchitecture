@@ -3,8 +3,9 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
 
-    [SerializeField]
-    private EnemyController currentTarget;
+    [SerializeField] private EnemyController currentTarget;
+    
+    [SerializeField] private TargetSelector targetSelector;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +18,8 @@ public class AttackController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            currentTarget.GetHit();
+            currentTarget = targetSelector.GetTarget();
+            currentTarget?.GetHit();
         }
     }
 }
