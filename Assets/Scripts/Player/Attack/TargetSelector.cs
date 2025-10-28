@@ -5,21 +5,27 @@ public class TargetSelector : MonoBehaviour
 {
 
     [SerializeField]
-    private List<EnemyController> targetsInRange = new ();
+    private List<Transform> targetsInRange = new ();
     
     public EnemyController GetTarget()
     {
         if (targetsInRange.Count > 0)
-            return targetsInRange[0];
+            return targetsInRange[0].GetComponent<EnemyController>();
 
         return null;
+    }
+
+    public void RemoveTarget(EventData eventData)
+    {
+        EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
+        targetsInRange.Remove(enemyDieEventData.enemyObject.transform);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            targetsInRange.Add(other.GetComponent<EnemyController>());
+            targetsInRange.Add(other.transform);
             Debug.Log($"Added {other.name} to targets");
         }
     }
@@ -28,7 +34,7 @@ public class TargetSelector : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            targetsInRange.Remove(other.GetComponent<EnemyController>());
+            targetsInRange.Remove(other.transform);
             Debug.Log($"Removed {other.name} from targets");
         }
     }

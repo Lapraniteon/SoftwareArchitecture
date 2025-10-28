@@ -342,6 +342,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 59495218}
+        m_TargetAssemblyTypeName: TargetSelector, Assembly-CSharp
+        m_MethodName: RemoveTarget
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!135 &59495217
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1111,6 +1123,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &911489276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693240972451349512, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_Name
+      value: Goblin (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5249424902185785652, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
 --- !u!1 &1119497315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1319,66 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -110}
   m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0, y: 1}
+--- !u!1001 &1367629342
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 599540405515615565, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693240972451349512, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: m_Name
+      value: Goblin (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5249424902185785652, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
 --- !u!1 &1398883962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,3 +1998,5 @@ SceneRoots:
   - {fileID: 282655583}
   - {fileID: 1398883965}
   - {fileID: 1798910415}
+  - {fileID: 1367629342}
+  - {fileID: 911489276}
