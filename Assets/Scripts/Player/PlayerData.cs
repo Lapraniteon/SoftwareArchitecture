@@ -28,8 +28,8 @@ public class Player
     public int Money => money;
     private int money;
     public int currentXp;
-    public int Level => level;
-    private int level;
+    
+    public int level;
     
     public int[] XpRequirementsForNextLevel => xpRequirementsForNextLevel;
     private int[] xpRequirementsForNextLevel;

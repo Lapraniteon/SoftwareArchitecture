@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxHP: 50
-  money: 0
-  xp: 0
+  startingMoney: 0
   level: 1
+  xpRequirementsForNextLevel: 0a000000

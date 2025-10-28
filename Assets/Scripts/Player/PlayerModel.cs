@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class PlayerModel : MonoBehaviour
 {
     [SerializeField] 
-    private PlayerData playerData;
+    private PlayerData playerInitData;
     private Player player;
 
     public event Action<Player> onPlayerInit;
@@ -16,12 +16,9 @@ public class PlayerModel : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
 
-    [SerializeField] private TextMeshProUGUI xpText;
-    [SerializeField] private TextMeshProUGUI levelText;
-
     private void Start()
     {
-        player = playerData.CreatePlayer();
+        player = playerInitData.CreatePlayer();
         
         navMeshAgent = GetComponent<NavMeshAgent>();
         
@@ -35,10 +32,34 @@ public class PlayerModel : MonoBehaviour
     
     public void OnEnemyKilled(EventData eventData)
     {
-        EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
+        // Only process XP if the hero hasn't reached the final level
+        if (player.level <= player.XpRequirementsForNextLevel.Length)
+        {
+            EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
 
-        player.currentXp += enemyDieEventData.enemy.XP;
+            player.currentXp += enemyDieEventData.enemy.XP;
+
+            int previousLevel = player.level;
+            
+            // Check for multiple level-ups if XP is enough
+            while (player.currentXp >= player.XpRequirementsForNextLevel[player.level - 1])
+            {
+                player.currentXp -= player.XpRequirementsForNextLevel[player.level - 1];
+
+                player.level++;
+
+                if (player.level > player.XpRequirementsForNextLevel.Length)
+                    break;
+            }
         
-        onPlayerXPGained?.Invoke(player);
+            // Trigger xp gained event after xp value is set is correctly
+            onPlayerXPGained?.Invoke(player);
+            
+            // Trigger level-up event if level increased
+            if (player.level > previousLevel)
+                onPlayerLevelUp?.Invoke(player);
+        }
+
+        
     }
 }
