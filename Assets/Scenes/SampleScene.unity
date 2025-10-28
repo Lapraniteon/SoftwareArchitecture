@@ -132,9 +132,10 @@ GameObject:
   - component: {fileID: 59495212}
   - component: {fileID: 59495211}
   - component: {fileID: 59495210}
-  - component: {fileID: 59495209}
   - component: {fileID: 59495208}
+  - component: {fileID: 59495209}
   - component: {fileID: 59495215}
+  - component: {fileID: 59495216}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -182,6 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8cda87273d2ea4ab5265d27ca39dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentXP: 0
+  currentLevel: 0
+  currentHP: 0
 --- !u!195 &59495210
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -289,7 +293,7 @@ Transform:
   m_GameObject: {fileID: 59495207}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.94, y: 1, z: 3.18}
+  m_LocalPosition: {x: 3.55, y: 1, z: -3.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -308,6 +312,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 196061008}
+--- !u!114 &59495216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59495207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93471507f52022c468781b36f21679d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5b79937c3d65b6c488c8905172b468d1, type: 2}
+  onEventPublished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 59495209}
+        m_TargetAssemblyTypeName: PlayerModel, Assembly-CSharp
+        m_MethodName: ObtainXP
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &196061007
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyController: {fileID: 196061008}
-  enemyDieEvent: {fileID: 0}
+  enemyDieEvent: {fileID: 11400000, guid: 5b79937c3d65b6c488c8905172b468d1, type: 2}
 --- !u!1 &282655581
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,13 +652,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.24881671, y: -0, z: -0, w: 0.9685506}
+  m_LocalPosition: {x: 0, y: 5.92, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.815, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
