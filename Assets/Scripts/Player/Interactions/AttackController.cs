@@ -1,16 +1,17 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyTargetSelector))]
 public class AttackController : MonoBehaviour
 {
 
-    [SerializeField] private EnemyController currentTarget;
+    private EnemyTargetSelector targetSelector;
     
-    [SerializeField] private TargetSelector targetSelector;
+    private EnemyController currentTarget;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        targetSelector = GetComponent<EnemyTargetSelector>();
     }
 
     // Update is called once per frame

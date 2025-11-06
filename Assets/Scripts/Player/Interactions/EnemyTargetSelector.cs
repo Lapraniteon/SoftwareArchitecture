@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetSelector : MonoBehaviour
+public class EnemyTargetSelector : TargetSelector
 {
 
-    [SerializeField]
-    private List<Transform> targetsInRange = new ();
-    
-    public EnemyController GetTarget()
+    public EnemyController GetTarget() // Get targets for enemy types
     {
         if (targetsInRange.Count > 0)
             return targetsInRange[0].GetComponent<EnemyController>();

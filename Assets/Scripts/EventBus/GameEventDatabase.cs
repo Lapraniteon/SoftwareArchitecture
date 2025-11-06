@@ -1,3 +1,4 @@
+using SADungeon.Inventory;
 using UnityEngine;
 // All game events are listed here
 
@@ -28,6 +29,30 @@ public class EnemyDieEventData : EventData
                    "Enemy died at position: " + enemyObject.transform.position + "\n"
                     + "Enemy Droped Money: " + enemy.Money
                     + "\n" + "Enemy gave XP: " + enemy.XP;
+        }
+    }
+}
+
+public class GroundPickupEventData : EventData
+{
+    public Item item;
+    public GameObject pickupObject;
+    public GroundPickupEventData(Item pItem, GameObject pPickupObject)
+    {
+        name = "EnemyDieEvent";
+        item = pItem;
+        pickupObject = pPickupObject;
+    }
+
+    //Overriding ToString method to display event information for debugging
+    public override string ToString()
+    {
+        if (pickupObject == null)
+            return "Pickup object already destroyed";
+        else
+        {
+            return "Event name: " + name + "\n" +
+                   "Ground pickup collected at position: " + pickupObject.transform.position + "\n";
         }
     }
 }
