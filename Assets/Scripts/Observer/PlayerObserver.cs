@@ -7,21 +7,21 @@ using UnityEngine;
 
 public abstract class PlayerObserver : MonoBehaviour
 {
-    [SerializeField]
-    protected PlayerModel playerModel;
+    //[SerializeField]
+    //protected PlayerModel playerModel;
 
     protected void OnEnable()
     {
-        playerModel.onPlayerInit += OnPlayerInit;
-        playerModel.onPlayerXPGained += OnPlayerXPGained;
-        playerModel.onPlayerLevelUp += OnPlayerLevelUp;
+        PlayerModel.onPlayerInit += OnPlayerInit;
+        PlayerModel.onPlayerXPGained += OnPlayerXPGained;
+        PlayerModel.onPlayerLevelUp += OnPlayerLevelUp;
     }
 
     protected void OnDisable()
     {
-        playerModel.onPlayerInit -= OnPlayerInit;
-        playerModel.onPlayerXPGained -= OnPlayerXPGained;
-        playerModel.onPlayerLevelUp -= OnPlayerLevelUp;
+        PlayerModel.onPlayerInit -= OnPlayerInit;
+        PlayerModel.onPlayerXPGained -= OnPlayerXPGained;
+        PlayerModel.onPlayerLevelUp -= OnPlayerLevelUp;
     }
 
     protected abstract void OnPlayerInit(Player player);

@@ -10,9 +10,9 @@ public class PlayerModel : MonoBehaviour
     private PlayerData playerInitData;
     private Player player;
 
-    public event Action<Player> onPlayerInit;
-    public event Action<Player> onPlayerXPGained;
-    public event Action<Player> onPlayerLevelUp;
+    public static event Action<Player> onPlayerInit;
+    public static event Action<Player> onPlayerXPGained;
+    public static event Action<Player> onPlayerLevelUp;
     
     private NavMeshAgent navMeshAgent;
 
