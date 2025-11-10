@@ -24,6 +24,7 @@ public class EnemyDieController : EnemyObserver
             {
                 enemyDieEvent.Publish(new EnemyDieEventData(enemy, enemyController.gameObject), enemyController.gameObject);
                 died = true;
+                LootSpawner.Instance.SpawnLoot(enemy.DropTable, enemyController.transform.position);
                 Destroy(enemyController.gameObject);
             }
         }

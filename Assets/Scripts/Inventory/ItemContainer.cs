@@ -12,7 +12,7 @@ namespace SADungeon.Inventory
     {
         public static Action<Item> onGetItem;
         [SerializeField]
-        private ItemData itemData;
+        public ItemData itemData;
 
         public Item GiveItem()
         {
