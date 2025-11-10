@@ -16,3 +16,7 @@ MonoBehaviour:
   speed: 1
   money: 1
   xp: 5
+  dropTable:
+  - {fileID: 11400000, guid: 56d758ef797e23f4f966ad62c635ce80, type: 2}
+  - {fileID: 11400000, guid: 56d758ef797e23f4f966ad62c635ce80, type: 2}
+  - {fileID: 11400000, guid: 56d758ef797e23f4f966ad62c635ce80, type: 2}

@@ -15,4 +15,10 @@ MonoBehaviour:
   maxHP: 50
   startingMoney: 0
   level: 1
-  xpRequirementsForNextLevel: 0a000000
+  nextLevelUpData:
+  - xpRequired: 10
+    baseHealthIncrease: 10
+  - xpRequired: 20
+    baseHealthIncrease: 20
+  - xpRequired: 30
+    baseHealthIncrease: 30
