@@ -11,19 +11,18 @@ public class PlayerData : ScriptableObject
     public int startingMoney;
     public int level;
 
-    public int[] xpRequirementsForNextLevel;
+    public LevelUpData[] nextLevelUpData;
 
     public Player CreatePlayer()
     {
-        return new Player(maxHP, startingMoney, level, xpRequirementsForNextLevel);
+        return new Player(maxHP, startingMoney, level, nextLevelUpData);
     }
 }
 
 [Serializable]
 public class Player
 {
-    public int MaxHP => maxHP;
-    private int maxHP;
+    public int MaxHP;
     public int currentHP;
     public int Money => money;
     private int money;
@@ -31,17 +30,25 @@ public class Player
     
     public int level;
     
-    public int[] XpRequirementsForNextLevel => xpRequirementsForNextLevel;
-    private int[] xpRequirementsForNextLevel;
+    public LevelUpData[] NextLevelUpData => nextLevelUpData;
+    private LevelUpData[] nextLevelUpData;
     
 
-    public Player(int pMaxHP, int pMoney, int pLevel, int[] pXpReqs)
+    public Player(int pMaxHP, int pMoney, int pLevel, LevelUpData[] pLevelUpData)
     {
-        maxHP = pMaxHP;
+        MaxHP = pMaxHP;
         currentHP = pMaxHP;
         money = pMoney;
         currentXp = 0;
         level = pLevel;
-        xpRequirementsForNextLevel = pXpReqs;
+        nextLevelUpData = pLevelUpData;
     }
+}
+
+[Serializable]
+public class LevelUpData
+{
+    public int xpRequired;
+
+    public int baseHealthIncrease;
 }

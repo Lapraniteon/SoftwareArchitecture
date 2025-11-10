@@ -33,7 +33,7 @@ public class PlayerModel : MonoBehaviour
     public void OnEnemyKilled(EventData eventData)
     {
         // Only process XP if the hero hasn't reached the final level
-        if (player.level <= player.XpRequirementsForNextLevel.Length)
+        if (player.level <= player.NextLevelUpData.Length)
         {
             EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
 
@@ -42,13 +42,16 @@ public class PlayerModel : MonoBehaviour
             int previousLevel = player.level;
             
             // Check for multiple level-ups if XP is enough
-            while (player.currentXp >= player.XpRequirementsForNextLevel[player.level - 1])
+            while (player.currentXp >= player.NextLevelUpData[player.level - 1].xpRequired)
             {
-                player.currentXp -= player.XpRequirementsForNextLevel[player.level - 1];
+                player.currentXp -= player.NextLevelUpData[player.level - 1].xpRequired;
+
+                player.MaxHP += player.NextLevelUpData[player.level - 1].baseHealthIncrease; // Increase player health
+                player.currentHP += player.NextLevelUpData[player.level - 1].baseHealthIncrease;
 
                 player.level++;
 
-                if (player.level > player.XpRequirementsForNextLevel.Length)
+                if (player.level > player.NextLevelUpData.Length)
                     break;
             }
         

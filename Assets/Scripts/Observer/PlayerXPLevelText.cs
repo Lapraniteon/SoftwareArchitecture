@@ -10,7 +10,7 @@ public class PlayerXPLevelText : PlayerObserver
 
     protected override void OnPlayerInit(Player player)
     {
-        xpText.text = $"XP: {player.currentXp}/{player.XpRequirementsForNextLevel[0]}";
+        xpText.text = $"XP: {player.currentXp}/{player.NextLevelUpData[0].xpRequired}";
         levelText.text = GetLevelText(player);
     }
     
@@ -27,17 +27,17 @@ public class PlayerXPLevelText : PlayerObserver
 
     private string GetXPText(Player player)
     {
-        if (player.level > player.XpRequirementsForNextLevel.Length) // Is player at max level?
+        if (player.level > player.NextLevelUpData.Length) // Is player at max level?
         {
             return $"XP: Max. level";
         }
         
-        return $"XP: {player.currentXp}/{player.XpRequirementsForNextLevel[player.level - 1]}";
+        return $"XP: {player.currentXp}/{player.NextLevelUpData[player.level - 1].xpRequired}";
     }
 
     private string GetLevelText(Player player)
     {
-        if (player.level > player.XpRequirementsForNextLevel.Length) // Is player at max level?
+        if (player.level > player.NextLevelUpData.Length) // Is player at max level?
         {
             return $"Level: {player.level} (Max)";
         }
