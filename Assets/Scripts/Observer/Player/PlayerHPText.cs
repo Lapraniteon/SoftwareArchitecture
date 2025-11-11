@@ -21,11 +21,6 @@ public class PlayerHPText : PlayerObserver
         UpdateHPText(player);
     }
 
-    protected override void OnPlayerXPGained(Player player)
-    {
-        //
-    }
-
     private void UpdateHPText(Player player)
     {
         hpText.text = $"HP: {player.currentHP} / {player.MaxHP}";

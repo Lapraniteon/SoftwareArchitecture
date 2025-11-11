@@ -15,6 +15,7 @@ public abstract class PlayerObserver : MonoBehaviour
         PlayerModel.onPlayerInit += OnPlayerInit;
         PlayerModel.onPlayerXPGained += OnPlayerXPGained;
         PlayerModel.onPlayerHit += OnPlayerHit;
+        PlayerModel.onPlayerDead += OnPlayerDead;
         PlayerModel.onPlayerLevelUp += OnPlayerLevelUp;
     }
 
@@ -23,13 +24,32 @@ public abstract class PlayerObserver : MonoBehaviour
         PlayerModel.onPlayerInit -= OnPlayerInit;
         PlayerModel.onPlayerXPGained -= OnPlayerXPGained;
         PlayerModel.onPlayerHit -= OnPlayerHit;
+        PlayerModel.onPlayerDead -= OnPlayerDead;
         PlayerModel.onPlayerLevelUp -= OnPlayerLevelUp;
     }
 
-    protected abstract void OnPlayerInit(Player player);
-    protected abstract void OnPlayerLevelUp(Player player);
-    
-    protected abstract void OnPlayerHit(Player player);
-    
-    protected abstract void OnPlayerXPGained(Player player);
+    protected virtual void OnPlayerInit(Player player)
+    {
+        
+    }
+
+    protected virtual void OnPlayerLevelUp(Player player)
+    {
+        
+    }
+
+    protected virtual void OnPlayerHit(Player player)
+    {
+        
+    }
+
+    protected virtual void OnPlayerDead(Player player)
+    {
+        
+    }
+
+    protected virtual void OnPlayerXPGained(Player player)
+    {
+        
+    }
 }

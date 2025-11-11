@@ -18,11 +18,6 @@ public class PlayerXPLevelText : PlayerObserver
     {
         xpText.text = GetXPText(player);
     }
-
-    protected override void OnPlayerHit(Player player)
-    {
-        //
-    }
     
     protected override void OnPlayerLevelUp(Player player)
     {
