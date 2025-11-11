@@ -18,11 +18,17 @@ public class EnemyTargetSelector : TargetSelector
         targetsInRange.Remove(enemyDieEventData.enemyObject.transform);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void AddTarget(Transform target)
+    {
+        if (!targetsInRange.Contains(target))
+            targetsInRange.Add(target);
+    }
+
+private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            targetsInRange.Add(other.transform);
+            AddTarget(other.transform);
             Debug.Log($"Added {other.name} to targets");
         }
     }

@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     private EnemyData enemyData;
     private Enemy enemy;
 
+    public bool playerInAttackRange = false;
+
     public event Action<Enemy> onEnemyCreated;
     public event Action<Enemy> onHit;
 

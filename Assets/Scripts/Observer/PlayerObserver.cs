@@ -14,6 +14,7 @@ public abstract class PlayerObserver : MonoBehaviour
     {
         PlayerModel.onPlayerInit += OnPlayerInit;
         PlayerModel.onPlayerXPGained += OnPlayerXPGained;
+        PlayerModel.onPlayerHit += OnPlayerHit;
         PlayerModel.onPlayerLevelUp += OnPlayerLevelUp;
     }
 
@@ -21,11 +22,14 @@ public abstract class PlayerObserver : MonoBehaviour
     {
         PlayerModel.onPlayerInit -= OnPlayerInit;
         PlayerModel.onPlayerXPGained -= OnPlayerXPGained;
+        PlayerModel.onPlayerHit -= OnPlayerHit;
         PlayerModel.onPlayerLevelUp -= OnPlayerLevelUp;
     }
 
     protected abstract void OnPlayerInit(Player player);
     protected abstract void OnPlayerLevelUp(Player player);
+    
+    protected abstract void OnPlayerHit(Player player);
     
     protected abstract void OnPlayerXPGained(Player player);
 }

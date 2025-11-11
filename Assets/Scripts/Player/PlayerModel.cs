@@ -12,6 +12,7 @@ public class PlayerModel : MonoBehaviour
 
     public static event Action<Player> onPlayerInit;
     public static event Action<Player> onPlayerXPGained;
+    public static event Action<Player> onPlayerHit;
     public static event Action<Player> onPlayerLevelUp;
     
     private NavMeshAgent navMeshAgent;
@@ -62,7 +63,12 @@ public class PlayerModel : MonoBehaviour
             if (player.level > previousLevel)
                 onPlayerLevelUp?.Invoke(player);
         }
+    }
 
+    public void GetHit(int damage)
+    {
+        player.currentHP -= damage;
         
+        onPlayerHit?.Invoke(player);
     }
 }
