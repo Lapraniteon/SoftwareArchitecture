@@ -1,20 +1,26 @@
 using System.Collections;
+using Unity.Collections;
 using UnityEngine;
 
 public class EnemyAttackController : EnemyObserver
 {
 
-    [SerializeField] PlayerModel playerModel;
+    PlayerModel playerModel;
 
     private Coroutine attackCoroutine; // Coroutine used to manage attack timing
     private bool attacking = false; // Indicates whether the enemy is currently attacking
 
     [SerializeField] 
     private AttackData attackData;
+
+    [SerializeField]
+    private EnemyAttackBehaviour attackBehaviour;
     
     private void Start()
     {
         playerModel = GameManager.Instance.playerModel;
+
+        attackBehaviour = GetComponent<EnemyAttackBehaviour>();
     }
     
     private void StartAttacking()
@@ -42,13 +48,15 @@ public class EnemyAttackController : EnemyObserver
             yield return new WaitForSeconds(attackData.attackInterval);
 
             // Get the current target from the selector
-            if (playerModel == null)
+            /*if (playerModel == null)
             {
                 Debug.LogWarning("Enemy attacks but has no player to attack");
                 continue;
             }
             
-            playerModel.GetHit(attackData.damage);
+            playerModel.GetHit(attackData.damage);*/
+
+            attackBehaviour?.Attack(playerModel, attackData);
         }
     }
     
