@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     
     public static GameManager Instance { get; private set; }
+
+    public PlayerModel playerModel;
     
     private void Awake()
     {

@@ -4,11 +4,19 @@ using UnityEngine;
 public class EnemyAttackController : EnemyObserver
 {
 
-    private PlayerModel playerModel;
+    [SerializeField] PlayerModel playerModel;
 
     private Coroutine attackCoroutine; // Coroutine used to manage attack timing
     private bool attacking = false; // Indicates whether the enemy is currently attacking
 
+    [SerializeField] 
+    private AttackData attackData;
+    
+    private void Start()
+    {
+        playerModel = GameManager.Instance.playerModel;
+    }
+    
     private void StartAttacking()
     {
         attacking = true;
@@ -20,7 +28,9 @@ public class EnemyAttackController : EnemyObserver
 
     private void StopAttacking()
     {
-        StopCoroutine(attackCoroutine);
+        if (attackCoroutine != null)
+            StopCoroutine(attackCoroutine);
+        
         attackCoroutine = null;
         attacking = false;
     }
@@ -29,7 +39,7 @@ public class EnemyAttackController : EnemyObserver
     {
         while (attacking)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(attackData.attackInterval);
 
             // Get the current target from the selector
             if (playerModel == null)
@@ -38,9 +48,12 @@ public class EnemyAttackController : EnemyObserver
                 continue;
             }
             
-            playerModel.GetHit(1);
+            playerModel.GetHit(attackData.damage);
         }
     }
+    
+    
+    #region Trigger-based range checking code
     
     private void OnTriggerEnter(Collider other)
     {
@@ -65,13 +78,5 @@ public class EnemyAttackController : EnemyObserver
         }
     }
     
-    protected override void OnEnemyCreated(Enemy enemy)
-    {
-        //
-    }
-
-    protected override void OnEnemyHit(Enemy enemy)
-    {
-        //
-    }
+    #endregion
 }

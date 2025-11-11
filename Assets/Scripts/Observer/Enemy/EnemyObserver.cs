@@ -10,19 +10,25 @@ public abstract class EnemyObserver : MonoBehaviour
     [SerializeField]
     protected EnemyController enemyController;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         enemyController.onEnemyCreated += OnEnemyCreated;
         enemyController.onHit += OnEnemyHit;
     }
 
-    protected void OnDisable()
+    protected virtual void OnDisable()
     {
         enemyController.onEnemyCreated -= OnEnemyCreated;
         enemyController.onHit -= OnEnemyHit;
     }
 
-    protected abstract void OnEnemyCreated(Enemy enemy);
+    protected virtual void OnEnemyCreated(Enemy enemy)
+    {
+        
+    }
 
-    protected abstract void OnEnemyHit(Enemy enemy);
+    protected virtual void OnEnemyHit(Enemy enemy)
+    {
+        
+    }
 }

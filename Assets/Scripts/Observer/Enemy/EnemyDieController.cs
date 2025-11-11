@@ -10,12 +10,6 @@ public class EnemyDieController : EnemyObserver
     private GameEvent enemyDieEvent;
     private bool died = false;
 
-
-    protected override void OnEnemyCreated(Enemy enemy)
-    {
-        // No implementation needed for now
-    }
-
     protected override void OnEnemyHit(Enemy enemy)
     {
         if (!died)

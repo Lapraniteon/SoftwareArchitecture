@@ -21,6 +21,7 @@ public class PlayerModel : MonoBehaviour
     private void Start()
     {
         player = playerInitData.CreatePlayer();
+        GameManager.Instance.playerModel = this;
         
         navMeshAgent = GetComponent<NavMeshAgent>();
         
