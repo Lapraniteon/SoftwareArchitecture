@@ -22,9 +22,10 @@ public class EnemyController : MonoBehaviour
         onEnemyCreated?.Invoke(enemy);
     }
 
-    public void GetHit()
+    public void GetHit(AttackData attackData)
     {
-        enemy.currentHP -= 1;
+        enemy.currentHP -= attackData.damage;
+        
         if(enemy.currentHP < 0)
         {
             enemy.currentHP = 0;

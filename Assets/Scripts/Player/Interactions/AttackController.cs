@@ -7,6 +7,9 @@ public class AttackController : MonoBehaviour
     private EnemyTargetSelector targetSelector;
     
     private EnemyController currentTarget;
+
+    [SerializeField]
+    private AttackData attackData;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +23,7 @@ public class AttackController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentTarget = targetSelector.GetTarget();
-            currentTarget?.GetHit();
+            currentTarget?.GetHit(attackData);
         }
     }
 }
