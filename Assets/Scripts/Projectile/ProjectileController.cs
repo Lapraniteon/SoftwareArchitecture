@@ -41,5 +41,11 @@ public class ProjectileController : MonoBehaviour
             EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
             enemyController?.GetHit(_attackData);
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+            PlayerModel playerModel = collision.gameObject.GetComponent<PlayerModel>();
+            playerModel?.GetHit(_attackData);
+        }
     }
 }

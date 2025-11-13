@@ -11,10 +11,16 @@ public class AttackController : MonoBehaviour
     [SerializeField]
     private AttackData attackData;
     
+    private AttackBehaviour attackBehaviour;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetSelector = GetComponent<EnemyTargetSelector>();
+        
+        attackBehaviour = GetComponent<AttackBehaviour>();
+        if (attackBehaviour is null)
+            Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
     }
 
     // Update is called once per frame
@@ -23,7 +29,9 @@ public class AttackController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentTarget = targetSelector.GetTarget();
-            currentTarget?.GetHit(attackData);
+            
+            if (currentTarget is not null)
+                attackBehaviour.Attack(currentTarget.transform, attackData);
         }
     }
 }

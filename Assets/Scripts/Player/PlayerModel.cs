@@ -67,9 +67,9 @@ public class PlayerModel : MonoBehaviour
         }
     }
 
-    public void GetHit(int damage)
+    public void GetHit(AttackData attackData)
     {
-        player.currentHP -= damage;
+        player.currentHP -= attackData.damage;
         
         onPlayerHit?.Invoke(player);
 

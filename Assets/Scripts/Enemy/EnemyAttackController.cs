@@ -13,14 +13,15 @@ public class EnemyAttackController : EnemyObserver
     [SerializeField] 
     private AttackData attackData;
 
-    [SerializeField]
-    private EnemyAttackBehaviour attackBehaviour;
+    private AttackBehaviour attackBehaviour;
     
     private void Start()
     {
         playerModel = GameManager.Instance.playerModel;
 
-        attackBehaviour = GetComponent<EnemyAttackBehaviour>();
+        attackBehaviour = GetComponent<AttackBehaviour>();
+        if (attackBehaviour is null)
+            Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
     }
     
     private void StartAttacking()
@@ -56,7 +57,7 @@ public class EnemyAttackController : EnemyObserver
             
             playerModel.GetHit(attackData.damage);*/
 
-            attackBehaviour?.Attack(playerModel, attackData);
+            attackBehaviour?.Attack(playerModel.transform, attackData);
         }
     }
     
