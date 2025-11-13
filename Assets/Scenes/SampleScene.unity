@@ -480,10 +480,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 59495207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5da9ab4e162a1c478e618342c052bdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 795d8795ca592f0479cfab21b3159385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
+  projectilePrefab: {fileID: 4786675117278871246, guid: 5cc8839eeb70e8b4d853c8e8ab209fa6, type: 3}
 --- !u!1 &225660077
 GameObject:
   m_ObjectHideFlags: 0

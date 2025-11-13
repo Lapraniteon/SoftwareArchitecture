@@ -8,7 +8,7 @@ public class RangedAttackBehaviour : AttackBehaviour
     
     public override void Attack(Transform target, AttackData attackData)
     {
-        ProjectileController projectile = Instantiate(projectilePrefab, target.transform.position, Quaternion.identity);
+        ProjectileController projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.SetUp(target, attackData);
     }
 }

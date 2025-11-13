@@ -23,7 +23,7 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
-        if (_target is null)
+        if (_target == null)
         {
             Destroy(gameObject);
             return;
@@ -41,11 +41,11 @@ public class ProjectileController : MonoBehaviour
             EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
             enemyController?.GetHit(_attackData);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        /*if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             PlayerModel playerModel = collision.gameObject.GetComponent<PlayerModel>();
             playerModel?.GetHit(_attackData);
-        }
+        }*/
     }
 }
