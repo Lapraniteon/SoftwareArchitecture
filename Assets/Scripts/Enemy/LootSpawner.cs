@@ -4,16 +4,8 @@ using UnityEngine;
 public class LootSpawner : MonoBehaviour
 {
     
-    public static LootSpawner Instance { get; private set; }
-
     [SerializeField] 
     private GroundPickup groundPickupPrefab;
-    
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
 
     public void SpawnLoot(ItemData[] lootArray, Vector3 center, float range = 1f)
     {
