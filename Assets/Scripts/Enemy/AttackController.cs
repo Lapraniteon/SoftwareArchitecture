@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SADungeon.Enemy
 {
 
-    public class EnemyAttackController : EnemyObserver
+    public class AttackController : EnemyObserver
     {
 
         private PlayerModel playerModel;
