@@ -60,7 +60,7 @@ namespace SADungeon.Enemy
 
                 playerModel.GetHit(attackData.damage);*/
 
-                attackBehaviour?.Attack(playerModel.transform, attackData);
+                attackBehaviour?.Attack(playerModel.transform, attackData, Tags.Player);
             }
         }
 

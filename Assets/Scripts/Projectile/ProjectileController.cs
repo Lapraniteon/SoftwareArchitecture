@@ -1,4 +1,5 @@
 using SADungeon.Enemy;
+using SADungeon.Player;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
@@ -6,6 +7,7 @@ public class ProjectileController : MonoBehaviour
 
     private AttackData _attackData;
     private Transform _target;
+    private string _targetTag;
     [SerializeField]
     private float speed = 1f;
     [SerializeField]
@@ -16,9 +18,10 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject, duration);
     }
     
-    public void SetUp(Transform pTarget, AttackData pAttackData)
+    public void SetUp(Transform pTarget, AttackData pAttackData, string pTargetTag)
     {
         _target = pTarget;
+        _targetTag = pTargetTag;
         _attackData = pAttackData;
     }
 
@@ -36,17 +39,20 @@ public class ProjectileController : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (!collision.gameObject.CompareTag(_targetTag))
+            return;
+        
+        if (_targetTag == Tags.Enemy)
         {
             Destroy(gameObject);
             EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
             enemyController?.GetHit(_attackData);
         }
-        /*if (collision.gameObject.CompareTag("Player"))
+        if (_targetTag == Tags.Player)
         {
             Destroy(gameObject);
             PlayerModel playerModel = collision.gameObject.GetComponent<PlayerModel>();
             playerModel?.GetHit(_attackData);
-        }*/
+        }
     }
 }

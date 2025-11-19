@@ -34,7 +34,7 @@ namespace SADungeon.Player
                 currentTarget = targetSelector.GetTarget();
 
                 if (currentTarget is not null)
-                    attackBehaviour.Attack(currentTarget.transform, attackData);
+                    attackBehaviour.Attack(currentTarget.transform, attackData, Tags.Enemy);
             }
         }
     }
