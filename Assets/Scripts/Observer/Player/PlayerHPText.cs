@@ -1,28 +1,32 @@
 using TMPro;
 using UnityEngine;
 
-public class PlayerHPText : PlayerObserver
+namespace SADungeon.Player
 {
 
-    [SerializeField] private TextMeshProUGUI hpText;
-    
-    protected override void OnPlayerInit(Player player)
+    public class PlayerHPText : PlayerObserver
     {
-        UpdateHPText(player);
-    }
 
-    protected override void OnPlayerLevelUp(Player player)
-    {
-        UpdateHPText(player);
-    }
+        [SerializeField] private TextMeshProUGUI hpText;
 
-    protected override void OnPlayerHit(Player player)
-    {
-        UpdateHPText(player);
-    }
+        protected override void OnPlayerInit(Player player)
+        {
+            UpdateHPText(player);
+        }
 
-    private void UpdateHPText(Player player)
-    {
-        hpText.text = $"HP: {player.currentHP} / {player.MaxHP}";
+        protected override void OnPlayerLevelUp(Player player)
+        {
+            UpdateHPText(player);
+        }
+
+        protected override void OnPlayerHit(Player player)
+        {
+            UpdateHPText(player);
+        }
+
+        private void UpdateHPText(Player player)
+        {
+            hpText.text = $"HP: {player.currentHP} / {player.MaxHP}";
+        }
     }
 }

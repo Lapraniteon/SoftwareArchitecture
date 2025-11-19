@@ -1,91 +1,95 @@
 using System.Collections;
+using SADungeon.Player;
 using Unity.Collections;
 using UnityEngine;
 
-public class EnemyAttackController : EnemyObserver
+namespace SADungeon.Enemy
 {
 
-    private PlayerModel playerModel;
-
-    private Coroutine attackCoroutine; // Coroutine used to manage attack timing
-    private bool attacking = false; // Indicates whether the enemy is currently attacking
-
-    [SerializeField] 
-    private AttackData attackData;
-
-    private AttackBehaviour attackBehaviour;
-    
-    private void Start()
+    public class EnemyAttackController : EnemyObserver
     {
-        playerModel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerModel>();
 
-        attackBehaviour = GetComponent<AttackBehaviour>();
-        if (attackBehaviour is null)
-            Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
-    }
-    
-    private void StartAttacking()
-    {
-        attacking = true;
-        if (attackCoroutine == null)
+        private PlayerModel playerModel;
+
+        private Coroutine attackCoroutine; // Coroutine used to manage attack timing
+        private bool attacking = false; // Indicates whether the enemy is currently attacking
+
+        [SerializeField] private AttackData attackData;
+
+        private AttackBehaviour attackBehaviour;
+
+        private void Start()
         {
-            attackCoroutine = StartCoroutine(Attack());
+            playerModel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerModel>();
+
+            attackBehaviour = GetComponent<AttackBehaviour>();
+            if (attackBehaviour is null)
+                Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
         }
-    }
 
-    private void StopAttacking()
-    {
-        if (attackCoroutine != null)
-            StopCoroutine(attackCoroutine);
-        
-        attackCoroutine = null;
-        attacking = false;
-    }
-    
-    private IEnumerator Attack()
-    {
-        while (attacking)
+        private void StartAttacking()
         {
-            yield return new WaitForSeconds(attackData.attackInterval);
-
-            // Get the current target from the selector
-            /*if (playerModel == null)
+            attacking = true;
+            if (attackCoroutine == null)
             {
-                Debug.LogWarning("Enemy attacks but has no player to attack");
-                continue;
+                attackCoroutine = StartCoroutine(Attack());
             }
-            
-            playerModel.GetHit(attackData.damage);*/
-
-            attackBehaviour?.Attack(playerModel.transform, attackData);
         }
-    }
-    
-    
-    #region Trigger-based range checking code
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+
+        private void StopAttacking()
         {
-            if (playerModel == null) 
-                playerModel = other.GetComponent<PlayerModel>();
+            if (attackCoroutine != null)
+                StopCoroutine(attackCoroutine);
 
-            enemyController.playerInAttackRange = true;
-            
-            StartAttacking();
+            attackCoroutine = null;
+            attacking = false;
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        private IEnumerator Attack()
         {
-           enemyController.playerInAttackRange = false;
-           
-           StopAttacking();
+            while (attacking)
+            {
+                yield return new WaitForSeconds(attackData.attackInterval);
+
+                // Get the current target from the selector
+                /*if (playerModel == null)
+                {
+                    Debug.LogWarning("Enemy attacks but has no player to attack");
+                    continue;
+                }
+
+                playerModel.GetHit(attackData.damage);*/
+
+                attackBehaviour?.Attack(playerModel.transform, attackData);
+            }
         }
+
+
+        #region Trigger-based range checking code
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (playerModel == null)
+                    playerModel = other.GetComponent<PlayerModel>();
+
+                enemyController.playerInAttackRange = true;
+
+                StartAttacking();
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                enemyController.playerInAttackRange = false;
+
+                StopAttacking();
+            }
+        }
+
+        #endregion
     }
-    
-    #endregion
 }

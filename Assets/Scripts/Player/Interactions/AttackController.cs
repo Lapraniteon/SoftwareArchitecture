@@ -1,37 +1,41 @@
+using SADungeon.Enemy;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyTargetSelector))]
-public class AttackController : MonoBehaviour
+namespace SADungeon.Player
 {
 
-    private EnemyTargetSelector targetSelector;
-    
-    private EnemyController currentTarget;
-
-    [SerializeField]
-    private AttackData attackData;
-    
-    private AttackBehaviour attackBehaviour;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [RequireComponent(typeof(EnemyTargetSelector))]
+    public class AttackController : MonoBehaviour
     {
-        targetSelector = GetComponent<EnemyTargetSelector>();
-        
-        attackBehaviour = GetComponent<AttackBehaviour>();
-        if (attackBehaviour is null)
-            Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        private EnemyTargetSelector targetSelector;
+
+        private EnemyController currentTarget;
+
+        [SerializeField] private AttackData attackData;
+
+        private AttackBehaviour attackBehaviour;
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            currentTarget = targetSelector.GetTarget();
-            
-            if (currentTarget is not null)
-                attackBehaviour.Attack(currentTarget.transform, attackData);
+            targetSelector = GetComponent<EnemyTargetSelector>();
+
+            attackBehaviour = GetComponent<AttackBehaviour>();
+            if (attackBehaviour is null)
+                Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                currentTarget = targetSelector.GetTarget();
+
+                if (currentTarget is not null)
+                    attackBehaviour.Attack(currentTarget.transform, attackData);
+            }
         }
     }
 }

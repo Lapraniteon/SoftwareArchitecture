@@ -1,38 +1,42 @@
 using SADungeon.Inventory;
 using UnityEngine;
 
-public class PickupTargetSelector : TargetSelector
+namespace SADungeon.Player
 {
 
-    public GroundPickup GetTarget() // Get targets for enemy types
+    public class PickupTargetSelector : TargetSelector
     {
-        if (targetsInRange.Count > 0)
-            return targetsInRange[0].GetComponent<GroundPickup>();
 
-        return null;
-    }
-
-    public void RemoveTarget(EventData eventData)
-    {
-        GroundPickupEventData groundPickupEventData = (GroundPickupEventData)eventData;
-        targetsInRange.Remove(groundPickupEventData.pickupObject.transform);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("PickupItem"))
+        public GroundPickup GetTarget() // Get targets for enemy types
         {
-            targetsInRange.Add(other.transform);
-            Debug.Log($"Added {other.name} to pickup targets");
+            if (targetsInRange.Count > 0)
+                return targetsInRange[0].GetComponent<GroundPickup>();
+
+            return null;
         }
-    }
-    
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("PickupItem"))
+
+        public void RemoveTarget(EventData eventData)
         {
-            targetsInRange.Remove(other.transform);
-            Debug.Log($"Removed {other.name} from pickup targets");
+            GroundPickupEventData groundPickupEventData = (GroundPickupEventData)eventData;
+            targetsInRange.Remove(groundPickupEventData.pickupObject.transform);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("PickupItem"))
+            {
+                targetsInRange.Add(other.transform);
+                Debug.Log($"Added {other.name} to pickup targets");
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("PickupItem"))
+            {
+                targetsInRange.Remove(other.transform);
+                Debug.Log($"Removed {other.name} from pickup targets");
+            }
         }
     }
 }

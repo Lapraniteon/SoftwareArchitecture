@@ -1,4 +1,5 @@
 using System;
+using SADungeon.Player;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour

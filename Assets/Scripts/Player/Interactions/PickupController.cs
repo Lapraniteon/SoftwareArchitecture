@@ -1,3 +1,4 @@
+using SADungeon.Player;
 using UnityEngine;
 
 [RequireComponent(typeof(PickupTargetSelector))]

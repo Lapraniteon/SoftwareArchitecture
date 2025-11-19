@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetSelector : MonoBehaviour
+namespace SADungeon.Player
 {
-    [SerializeField]
-    protected List<Transform> targetsInRange = new ();
+    public class TargetSelector : MonoBehaviour
+    {
+        [SerializeField] protected List<Transform> targetsInRange = new();
+    }
 }

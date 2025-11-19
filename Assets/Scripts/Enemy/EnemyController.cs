@@ -1,42 +1,44 @@
 using UnityEngine;
 using System;
 
-/// <summary>
-/// Simple enemy controller that publish onEnemyCreated and onHit events when
-/// it's created and hit.
-/// </summary>
-public class EnemyController : MonoBehaviour
+namespace SADungeon.Enemy
 {
-    [SerializeField]
-    private EnemyData enemyData;
-    private Enemy enemy;
 
-    public bool playerInAttackRange = false;
-
-    public event Action<Enemy> onEnemyCreated;
-    public event Action<Enemy> onHit;
-
-    void Start()
+    /// <summary>
+    /// Simple enemy controller that publish onEnemyCreated and onHit events when
+    /// it's created and hit.
+    /// </summary>
+    public class EnemyController : MonoBehaviour
     {
-        enemy = enemyData.CreateEnemy();
-        onEnemyCreated?.Invoke(enemy);
-    }
+        [SerializeField] private EnemyData enemyData;
+        private Enemy enemy;
 
-    public void GetHit(AttackData attackData)
-    {
-        enemy.currentHP -= attackData.damage;
-        
-        if(enemy.currentHP < 0)
+        public bool playerInAttackRange = false;
+
+        public event Action<Enemy> onEnemyCreated;
+        public event Action<Enemy> onHit;
+
+        void Start()
         {
-            enemy.currentHP = 0;
+            enemy = enemyData.CreateEnemy();
+            onEnemyCreated?.Invoke(enemy);
         }
-        
-        Debug.Log("Enemy hit! Health: " + enemy.currentHP);
 
-        onHit?.Invoke(enemy);
+        public void GetHit(AttackData attackData)
+        {
+            enemy.currentHP -= attackData.damage;
+
+            if (enemy.currentHP < 0)
+            {
+                enemy.currentHP = 0;
+            }
+
+            Debug.Log("Enemy hit! Health: " + enemy.currentHP);
+
+            onHit?.Invoke(enemy);
+        }
     }
 }
-
 
 
 

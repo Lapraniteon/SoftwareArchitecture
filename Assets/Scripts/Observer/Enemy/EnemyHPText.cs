@@ -1,24 +1,28 @@
 using TMPro;
 using UnityEngine;
 
-public class EnemyHPText : EnemyObserver
+namespace SADungeon.Enemy
 {
 
-    public TMP_Text hpText;
-    
-    protected override void OnEnemyCreated(Enemy enemy)
+    public class EnemyHPText : EnemyObserver
     {
-        UpdateText(enemy);
-    }
-    
-    protected override void OnEnemyHit(Enemy enemy)
-    {
-        UpdateText(enemy);
-    }
 
-    private void UpdateText(Enemy enemy)
-    {
-        hpText.text = $"{enemy.currentHP}/{enemy.MaxHP}";
+        public TMP_Text hpText;
+
+        protected override void OnEnemyCreated(Enemy enemy)
+        {
+            UpdateText(enemy);
+        }
+
+        protected override void OnEnemyHit(Enemy enemy)
+        {
+            UpdateText(enemy);
+        }
+
+        private void UpdateText(Enemy enemy)
+        {
+            hpText.text = $"{enemy.currentHP}/{enemy.MaxHP}";
+        }
+
     }
-    
 }
