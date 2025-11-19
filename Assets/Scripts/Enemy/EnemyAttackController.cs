@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttackController : EnemyObserver
 {
 
-    PlayerModel playerModel;
+    private PlayerModel playerModel;
 
     private Coroutine attackCoroutine; // Coroutine used to manage attack timing
     private bool attacking = false; // Indicates whether the enemy is currently attacking
@@ -17,7 +17,7 @@ public class EnemyAttackController : EnemyObserver
     
     private void Start()
     {
-        playerModel = GameManager.Instance.playerModel;
+        playerModel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerModel>();
 
         attackBehaviour = GetComponent<AttackBehaviour>();
         if (attackBehaviour is null)
