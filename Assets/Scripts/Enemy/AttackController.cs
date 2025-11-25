@@ -13,6 +13,7 @@ namespace SADungeon.Enemy
 
         private Coroutine attackCoroutine; // Coroutine used to manage attack timing
         private bool attacking = false; // Indicates whether the enemy is currently attacking
+        private bool waiting = false;
 
         [SerializeField] private AttackData attackData;
 
@@ -27,7 +28,7 @@ namespace SADungeon.Enemy
                 Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
         }
 
-        private void StartAttacking()
+        public void StartAttacking()
         {
             attacking = true;
             if (attackCoroutine == null)
@@ -36,7 +37,7 @@ namespace SADungeon.Enemy
             }
         }
 
-        private void StopAttacking()
+        public void StopAttacking()
         {
             if (attackCoroutine != null)
                 StopCoroutine(attackCoroutine);
@@ -49,7 +50,9 @@ namespace SADungeon.Enemy
         {
             while (attacking)
             {
+                waiting = true;
                 yield return new WaitForSeconds(attackData.attackInterval);
+                waiting = false;
 
                 // Get the current target from the selector
                 /*if (playerModel == null)
@@ -64,8 +67,18 @@ namespace SADungeon.Enemy
             }
         }
 
+        public bool IsWaitingForAttack()
+        {
+            return waiting;
+        }
 
-        #region Trigger-based range checking code
+        public float GetAttackRange()
+        {
+            return attackBehaviour?.attackRange ?? 0f;
+        }
+
+
+        /*#region Trigger-based range checking code
 
         private void OnTriggerEnter(Collider other)
         {
@@ -90,6 +103,6 @@ namespace SADungeon.Enemy
             }
         }
 
-        #endregion
+        #endregion*/
     }
 }

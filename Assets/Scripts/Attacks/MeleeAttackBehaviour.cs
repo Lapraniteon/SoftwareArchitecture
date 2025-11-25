@@ -5,8 +5,6 @@ using UnityEngine;
 public class MeleeAttackBehaviour : AttackBehaviour
 {
 
-    [SerializeField] private float attackRange;
-    
     public override void Attack(Transform target, AttackData attackData, string targetTag)
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
