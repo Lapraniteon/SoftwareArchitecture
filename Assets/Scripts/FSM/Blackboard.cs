@@ -3,7 +3,6 @@ using SADungeon.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using AttackController = SADungeon.Enemy.AttackController;
 
 namespace SADungeon.FSM
 {
