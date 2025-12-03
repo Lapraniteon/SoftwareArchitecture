@@ -21,11 +21,7 @@ namespace SADungeon.Enemy
 
         private void Start()
         {
-            playerModel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerModel>();
-
-            attackBehaviour = GetComponent<AttackBehaviour>();
-            if (attackBehaviour is null)
-                Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
+            
         }
 
         public void StartAttacking()

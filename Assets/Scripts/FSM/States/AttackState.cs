@@ -1,4 +1,6 @@
+using System.Collections;
 using SADungeon.Enemy;
+using SADungeon.Player;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -10,11 +12,21 @@ namespace SADungeon.FSM
     /// </summary>
     public class AttackState : State
     {
-        private AttackController _attackController;
+        private Transform target;
+        private AttackData attackData;
+        private AttackBehaviour attackBehaviour;
+        private string targetTag;
+        private float attackInterval;
 
-        public AttackState(Blackboard pBlackboard)
+        private float attackStartTime;
+
+        public AttackState(Blackboard pBlackboard, string pTargetTag)
         {
-            _attackController = pBlackboard.attackController;
+            target = pBlackboard.target;
+            attackData = pBlackboard.attackData;
+            attackBehaviour = pBlackboard.attackBehaviour;
+            targetTag = pTargetTag;
+            attackInterval = pBlackboard.attackInterval;
 
             stateName = "Attack";
         }
@@ -22,19 +34,13 @@ namespace SADungeon.FSM
         public override void Enter()
         {
             base.Enter();
-            _attackController.StartAttacking();
+            attackStartTime = Time.time;
+            attackBehaviour?.Attack(target, attackData, targetTag);
         }
-
-        public override void Exit()
+        
+        public bool FinishedAttacking()
         {
-            base.Exit();
-            _attackController.StopAttacking();
-        }
-
-        //--------Helper Condition for Transitions to decide whether to transition to the next state
-        public bool AttackOver()
-        {
-            return _attackController.IsWaitingForAttack();
+            return Time.time > attackStartTime + attackInterval;
         }
     }
 }

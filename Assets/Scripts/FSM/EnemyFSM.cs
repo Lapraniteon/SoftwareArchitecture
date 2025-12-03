@@ -32,7 +32,7 @@ namespace SADungeon.FSM
             moveToState = new MoveToState(navMeshAgent, blackboard);
             alignToState = new AlignToState(blackboard);
             idleState = new IdleState(blackboard);
-            attackState = new AttackState(blackboard);
+            attackState = new AttackState(blackboard, Tags.Player);
 
             //Transitions setup
 
@@ -53,7 +53,7 @@ namespace SADungeon.FSM
 
             //When attack is over:
             //Re-align to target
-            attackState.transitions.Add(new Transition(attackState.AttackOver, alignToState));
+            attackState.transitions.Add(new Transition(attackState.FinishedAttacking, alignToState));
 
 
             /*idleState.onEnter += () => { animator.SetBool("Idle", true); };

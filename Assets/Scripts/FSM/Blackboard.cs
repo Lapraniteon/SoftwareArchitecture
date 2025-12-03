@@ -22,12 +22,15 @@ namespace SADungeon.FSM
         public float attackInterval = 0.5f;      // Time between attacks
         public float distanceThreshold = 0.2f;   // Distance tolerance for reaching a destination
 
-        private PlayerModel playerModel;
+        public PlayerModel playerModel;
 
         // TEMPORARY
-        public AttackController attackController;
         public float idleTime;
         public TextMeshProUGUI stateText;
+        
+        [Header("Attack")] 
+        public AttackData attackData;
+        public AttackBehaviour attackBehaviour;
 
         #region "For enemies only"
         [SerializeField]
@@ -66,6 +69,10 @@ namespace SADungeon.FSM
         public void Initialize(NavMeshAgent agent)
         {
             playerModel = FindFirstObjectByType<PlayerModel>();
+            
+            attackBehaviour = GetComponent<AttackBehaviour>();
+            if (attackBehaviour is null)
+                Debug.LogWarning($"No attack behaviour attached to {gameObject.name}!");
 
             navMeshAgent = agent;
             
