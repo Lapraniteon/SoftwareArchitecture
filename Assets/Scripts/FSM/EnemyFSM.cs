@@ -10,43 +10,29 @@ namespace SADungeon.FSM
     /// A finite state machine that controls the enemy behaviour
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyFSM : MonoBehaviour
+    public class EnemyFSM : FSM
     {
-        private Transform target;
         private NavMeshAgent navMeshAgent;
-        [SerializeField] private float chaseRange = 3f;
-        [SerializeField] private float chaseThreshold = 1f;
-        private float attackRange;
-        [SerializeField] private float rotateSpeed = 90f;
-        [SerializeField] private float idleTime = 2f;
-        private AttackController attackController;
 
         // FSM states
         private MoveToState moveToState;
         private AlignToState alignToState;
         private IdleState idleState;
         private AttackState attackState;
-
-        // The current state
-        [SerializeReference] private State currentState;
-
-        [SerializeField] private TextMeshProUGUI stateText;
-
-        void Start()
+        
+        public EnemyFSM(NavMeshAgent pNavMeshAgent, Blackboard pBlackboard)
         {
-            navMeshAgent = GetComponent<NavMeshAgent>();
+            Debug.Log("Initialize enemyFSM");
             
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-
-            attackController = GetComponent<AttackController>();
-
-            attackRange = attackController.GetAttackRange();
+            navMeshAgent = pNavMeshAgent;
+            
+            blackboard = pBlackboard;
 
             //Create states
-            moveToState = new MoveToState(target, navMeshAgent, chaseThreshold, chaseRange);
-            alignToState = new AlignToState(transform, target, rotateSpeed, chaseRange);
-            idleState = new IdleState(chaseRange, transform, target, idleTime);
-            attackState = new AttackState(attackController);
+            moveToState = new MoveToState(navMeshAgent, blackboard);
+            alignToState = new AlignToState(blackboard);
+            idleState = new IdleState(blackboard);
+            attackState = new AttackState(blackboard);
 
             //Transitions setup
 
@@ -82,23 +68,20 @@ namespace SADungeon.FSM
             //Default state is idleState.
             currentState = idleState;
         }
+        
+        public override void Enter()
+        {
+            base.Enter();
+            currentState.Enter();
+        }
 
         //In each update, step the current state to let it process, then check if a condition is met
         //for one of the current state's transitions, if so transition to next state.
-        void Update()
+        /*void Update()
         {
-            currentState.Step();
-            if (currentState.NextState() != null)
-            {
-                //Cache the next state, because after currentState.Exit, calling
-                //currentState.NextState again might return null because of change
-                //of context.
-                State nextState = currentState.NextState();
-                currentState.Exit();
-                currentState = nextState;
-                stateText.text = currentState.stateName;
-                currentState.Enter();
-            }
-        }
+            Step();
+            blackboard.currentState = currentState.stateName;
+            blackboard.stateText.text = currentState.stateName;
+        }*/
     }
 }

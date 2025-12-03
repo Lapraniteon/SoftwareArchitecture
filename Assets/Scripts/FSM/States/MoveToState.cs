@@ -12,14 +12,14 @@ namespace SADungeon.FSM
         private Transform target;
         private NavMeshAgent navMeshAgent;
         private float distanceThreshold;
-        private float targetRange;
+        private float chaseRange;
 
-        public MoveToState(Transform pTarget, NavMeshAgent pNavMeshAgent, float pDistanceThreshold, float pTargetRange)
+        public MoveToState(NavMeshAgent pNavMeshAgent, Blackboard pBlackboard)
         {
-            target = pTarget;
+            target = pBlackboard.target;
             navMeshAgent = pNavMeshAgent;
-            distanceThreshold = pDistanceThreshold;
-            targetRange = pTargetRange;
+            distanceThreshold = pBlackboard.distanceThreshold;
+            chaseRange = pBlackboard.chaseRange;
 
             stateName = "MoveTo";
         }
@@ -55,7 +55,7 @@ namespace SADungeon.FSM
         //to the next state.
         public bool TargetOutOfRange()
         {
-            return Vector3.Distance(navMeshAgent.transform.position, target.position) > targetRange;
+            return Vector3.Distance(navMeshAgent.transform.position, target.position) > chaseRange;
         }
     }
 }

@@ -18,11 +18,14 @@ namespace SADungeon.FSM
         // List of possible transitions from this state to other states
         // Marked with [SerializeReference] to show properties in the Unity Inspector for easy debugging
         [SerializeReference] public List<Transition> transitions = new List<Transition>();
+        
+        protected Blackboard blackboard;
 
         // Called when the state is entered.
         // Can be overridden by derived states to perform setup logic.
         public virtual void Enter()
         {
+            Debug.Log("Enter " + stateName);
             onEnter?.Invoke();
         }
 
@@ -45,6 +48,7 @@ namespace SADungeon.FSM
         // Can be overridden by derived states to perform cleanup logic.
         public virtual void Exit()
         {
+            Debug.Log("Exit " + stateName);
             onExit?.Invoke();
         }
 

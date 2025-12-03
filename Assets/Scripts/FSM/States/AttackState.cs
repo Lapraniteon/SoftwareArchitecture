@@ -12,9 +12,9 @@ namespace SADungeon.FSM
     {
         private AttackController _attackController;
 
-        public AttackState(AttackController pAttackController)
+        public AttackState(Blackboard pBlackboard)
         {
-            _attackController = pAttackController;
+            _attackController = pBlackboard.attackController;
 
             stateName = "Attack";
         }

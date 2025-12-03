@@ -13,14 +13,14 @@ namespace SADungeon.FSM
         private Vector3 direction;
         private float rotationSpeed;
         private float rotationSign;
-        private float targetRange;
+        private float attackRange;
 
-        public AlignToState(Transform pSelf, Transform pTarget, float pRotationSpeed, float pTargetRange)
+        public AlignToState(Blackboard pBlackboard)
         {
-            self = pSelf;
-            SetTarget(pTarget);
-            rotationSpeed = pRotationSpeed;
-            targetRange = pTargetRange;
+            self = pBlackboard.stateOwnerTransform;
+            SetTarget(pBlackboard.target);
+            rotationSpeed = pBlackboard.rotateSpeed;
+            attackRange = pBlackboard.attackRange;
 
             stateName = "AlignTo";
         }
@@ -53,7 +53,7 @@ namespace SADungeon.FSM
 
         public bool TargetOutOfRange()
         {
-            return Vector3.Distance(self.position, target.position) > targetRange;
+            return Vector3.Distance(self.position, target.position) > attackRange;
         }
     }
 }

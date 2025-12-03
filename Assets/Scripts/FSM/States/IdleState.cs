@@ -8,18 +8,18 @@ namespace SADungeon.FSM
     /// </summary>
     public class IdleState : State
     {
-        private float detectRange;
+        private float chaseRange;
         private Transform self;
         private Transform target;
         private float idleTime;
         private float startTime;
 
-        public IdleState(float pDetectRange, Transform pSelf, Transform pTarget, float pIdleTime)
+        public IdleState(Blackboard pBlackboard)
         {
-            detectRange = pDetectRange;
-            self = pSelf;
-            target = pTarget;
-            idleTime = pIdleTime;
+            chaseRange = pBlackboard.chaseRange;
+            self = pBlackboard.stateOwnerTransform;
+            target = pBlackboard.target;
+            idleTime = pBlackboard.idleTime;
 
             stateName = "Idle";
         }
@@ -34,7 +34,7 @@ namespace SADungeon.FSM
 
         public bool IsTargetInRange()
         {
-            return (Vector3.Distance(self.transform.position, target.transform.position) <= detectRange);
+            return (Vector3.Distance(self.transform.position, target.transform.position) <= chaseRange);
         }
 
         public bool IdleTimeOver()
