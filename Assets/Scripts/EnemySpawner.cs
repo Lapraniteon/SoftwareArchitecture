@@ -91,4 +91,13 @@ public class EnemySpawner : MonoBehaviour
             EnemyController enemy = Instantiate(enemyPrefabToSpawn, origin + new Vector3(position.x, 0f, position.y), Quaternion.identity);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, innerRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, outerRadius);
+    }
 }

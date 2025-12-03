@@ -16,7 +16,6 @@ namespace SADungeon.FSM
         private AttackData attackData;
         private AttackBehaviour attackBehaviour;
         private string targetTag;
-        private float attackInterval;
 
         private float attackStartTime;
 
@@ -26,7 +25,6 @@ namespace SADungeon.FSM
             attackData = pBlackboard.attackData;
             attackBehaviour = pBlackboard.attackBehaviour;
             targetTag = pTargetTag;
-            attackInterval = pBlackboard.attackInterval;
 
             stateName = "Attack";
         }
@@ -40,7 +38,7 @@ namespace SADungeon.FSM
         
         public bool FinishedAttacking()
         {
-            return Time.time > attackStartTime + attackInterval;
+            return Time.time > attackStartTime + attackData.attackInterval;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SADungeon.FSM
         {
             target = pBlackboard.target;
             navMeshAgent = pNavMeshAgent;
-            distanceThreshold = pBlackboard.distanceThreshold;
+            distanceThreshold = pBlackboard.targetReachedThreshold;
             chaseRange = pBlackboard.chaseRange;
 
             stateName = "MoveTo";

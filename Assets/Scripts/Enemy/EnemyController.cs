@@ -41,7 +41,6 @@ namespace SADungeon.Enemy
         private void Update()
         {
             enemyFSM.Step();
-            blackboard.stateText.text = enemyFSM.CurrentStateName;
         }
 
         public void GetHit(AttackData attackData)

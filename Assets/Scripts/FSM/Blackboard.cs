@@ -3,6 +3,7 @@ using SADungeon.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace SADungeon.FSM
 {
@@ -12,34 +13,33 @@ namespace SADungeon.FSM
     /// </summary>
     public class Blackboard : MonoBehaviour
     {
-        public NavMeshAgent navMeshAgent;
+        [HideInInspector] public NavMeshAgent navMeshAgent;
         
-        public Vector3 targetPosition;           // Target position for alignment or movement
-        public float moveSpeed;                  // Movement speed of the entity
+        public Vector3 currentTargetPosition;           // Target position for alignment or movement
+        public float currentMoveSpeed;                  // Movement speed of the entity
         public float rotateSpeed = 180f;         // Rotation speed in degrees per second
         public Transform stateOwnerTransform;    // The transform of the FSM owner
-        public float attackInterval = 0.5f;      // Time between attacks
-        public float distanceThreshold = 0.2f;   // Distance tolerance for reaching a destination
+        [HideInInspector] public float attackInterval = 0.5f;      // Time between attacks
+        public float targetReachedThreshold = 0.2f;   // Distance tolerance for reaching a destination
 
-        public PlayerModel playerModel;
+        [HideInInspector] public PlayerModel playerModel;
 
         // TEMPORARY
         public float idleTime;
-        public TextMeshProUGUI stateText;
         
         [Header("Attack")] 
         public AttackData attackData;
-        public AttackBehaviour attackBehaviour;
+        [HideInInspector] public AttackBehaviour attackBehaviour;
 
         #region "For enemies only"
         [SerializeField]
         private bool isEnemy = true;
 
         // The target Transform that the enemy may chase or attack
-        public Transform target;
+        [HideInInspector] public Transform target;
 
         // List of waypoints for patrolling
-        public Transform[] waypoints;
+        public Transform[] patrolWaypoints;
 
         // How long to wait at each waypoint
         public float[] waitingTimes;
@@ -102,17 +102,18 @@ namespace SADungeon.FSM
                 // If the dog becomes alert, increase speed and set shorter wait time
                 if (dogMode == EnemyMode.ALERT)
                 {
-                    moveSpeed = alertModeSpeed;
+                    currentMoveSpeed = alertModeSpeed;
                     waitingTime = alertModeWaitingTime;
                 }
                 // If the dog returns to normal, use default speed and waypoint-specific wait time
                 else
                 {
-                    moveSpeed = normalModeSpeed;
+                    currentMoveSpeed = normalModeSpeed;
                     waitingTime = waitingTimes[waypointIndex];
                 }
 
-                navMeshAgent.speed = moveSpeed;
+                navMeshAgent.speed = currentMoveSpeed;
+                navMeshAgent.angularSpeed = rotateSpeed;
             }
         }
 
@@ -127,7 +128,7 @@ namespace SADungeon.FSM
             Vector2 randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 2f;
 
             // Apply the offset to the current waypoint (on the XZ plane)
-            return waypoints[waypointIndex].position +
+            return patrolWaypoints[waypointIndex].position +
                 new Vector3(randomOffset.x, 0f, randomOffset.y);
         }
         #endregion
