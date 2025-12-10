@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using SADungeon.FSM;
+using UnityEngine.AI;
 
 namespace SADungeon.Enemy
 {
@@ -13,7 +15,12 @@ namespace SADungeon.Enemy
         [SerializeField] private EnemyData enemyData;
         private Enemy enemy;
 
-        public bool playerInAttackRange = false;
+        private EnemyFSM enemyFSM;
+        
+        [SerializeField] 
+        private NavMeshAgent navMeshAgent;
+        [SerializeField] 
+        private Blackboard blackboard;
 
         public event Action<Enemy> onEnemyCreated;
         public event Action<Enemy> onHit;
@@ -22,6 +29,18 @@ namespace SADungeon.Enemy
         {
             enemy = enemyData.CreateEnemy();
             onEnemyCreated?.Invoke(enemy);
+            
+            blackboard.Initialize(navMeshAgent);
+            
+            if (enemyFSM == null)
+                enemyFSM = new EnemyFSM(navMeshAgent, blackboard);
+            
+            enemyFSM.Enter();
+        }
+
+        private void Update()
+        {
+            enemyFSM.Step();
         }
 
         public void GetHit(AttackData attackData)

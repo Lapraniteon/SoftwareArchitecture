@@ -16,10 +16,10 @@ GameObject:
   - component: {fileID: 5292950452426080138}
   - component: {fileID: 5223026814233155342}
   - component: {fileID: 1268248499449623004}
-  - component: {fileID: 8526654178213601914}
   - component: {fileID: 3199311551812435299}
   - component: {fileID: 794751741986595607}
   - component: {fileID: 7905993111179382957}
+  - component: {fileID: 1499024023877420842}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 20fae896b6eb7d54a8f3cd5946b1cb07, type: 2}
-  playerInAttackRange: 0
+  navMeshAgent: {fileID: 4434903713793014206}
+  blackboard: {fileID: 1499024023877420842}
 --- !u!114 &5223026814233155342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,20 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyController: {fileID: 5292950452426080138}
   hpText: {fileID: 8396095904506626855}
---- !u!114 &8526654178213601914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4075382939870948626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2eb6106455b9f4dbb31efe70f5df12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyController: {fileID: 5292950452426080138}
-  attackData: {fileID: 11400000, guid: a9a50f1b1d96d9940b0fa8fadc6e488e, type: 2}
 --- !u!135 &3199311551812435299
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -258,6 +245,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundPickupPrefab: {fileID: 1973431668521459968, guid: 81ad3a2877ec8ce4087b09af0b541ddf, type: 3}
+--- !u!114 &1499024023877420842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075382939870948626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc97c44d80c9ed44b46dc31e66f7967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 0
+  rotateSpeed: 180
+  stateOwnerTransform: {fileID: 2855506820605678679}
+  attackInterval: 0.5
+  distanceThreshold: 0.2
+  playerModel: {fileID: 0}
+  idleTime: 0
+  stateText: {fileID: 0}
+  attackData: {fileID: 0}
+  attackBehaviour: {fileID: 0}
+  isEnemy: 1
+  target: {fileID: 0}
+  waypoints: []
+  waitingTimes: []
+  waypointIndex: 0
+  waitingTime: 0
+  attackRange: 1
+  chaseRange: 2.5
+  normalModeSpeed: 1
+  alertModeSpeed: 2
+  alertModeWaitingTime: 1
 --- !u!1 &7433339218362363950
 GameObject:
   m_ObjectHideFlags: 0
