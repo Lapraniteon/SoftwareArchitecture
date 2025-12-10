@@ -1668,6 +1668,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10926008350139121, guid: 7520ba0bfb3c6184196d66653001a129, type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746142830648957521, guid: 7520ba0bfb3c6184196d66653001a129, type: 3}
+      propertyPath: idleTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7994534837202749740, guid: 7520ba0bfb3c6184196d66653001a129, type: 3}
       propertyPath: m_LocalPosition.x
       value: -36.36

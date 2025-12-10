@@ -15,7 +15,9 @@ namespace SADungeon.Enemy
         [SerializeField] private EnemyData enemyData;
         private Enemy enemy;
 
+        [SerializeField] private bool isBoss;
         private EnemyFSM enemyFSM;
+        private BossFSM bossFSM;
         
         [SerializeField] 
         private NavMeshAgent navMeshAgent;
@@ -31,16 +33,26 @@ namespace SADungeon.Enemy
             onEnemyCreated?.Invoke(enemy);
             
             blackboard.Initialize(navMeshAgent);
+
+            if (isBoss)
+            {
+                if (bossFSM == null)
+                    bossFSM = new BossFSM(navMeshAgent, blackboard);
+            }
+            else
+            {
+                if (enemyFSM == null)
+                    enemyFSM = new EnemyFSM(navMeshAgent, blackboard);
+            }
             
-            if (enemyFSM == null)
-                enemyFSM = new EnemyFSM(navMeshAgent, blackboard);
-            
-            enemyFSM.Enter();
+            enemyFSM?.Enter();
+            bossFSM?.Enter();
         }
 
         private void Update()
         {
-            enemyFSM.Step();
+            enemyFSM?.Step();
+            bossFSM?.Step();
         }
 
         public void GetHit(AttackData attackData)
@@ -55,6 +67,25 @@ namespace SADungeon.Enemy
             Debug.Log("Enemy hit! Health: " + enemy.currentHP);
 
             onHit?.Invoke(enemy);
+        }
+
+        public void SwitchAttackBehaviour(Type newBehaviour)
+        {
+            Destroy(blackboard.attackBehaviour);
+            AttackBehaviour newComponent = (AttackBehaviour)gameObject.AddComponent(newBehaviour);
+
+            if (newComponent is RangedAttackBehaviour rangedAttackBehaviour)
+            {
+                if (rangedAttackBehaviour != null)
+                    rangedAttackBehaviour.projectilePrefab = blackboard.projectilePrefab;
+            }
+                
+            blackboard.attackBehaviour = newComponent;
+        }
+
+        public void SwitchAttackData(AttackData newData)
+        {
+            blackboard.currentAttackData = newData;
         }
     }
 }

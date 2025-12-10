@@ -21,9 +21,10 @@ namespace SADungeon.FSM
 
         public AttackState(Blackboard pBlackboard, string pTargetTag)
         {
+            blackboard = pBlackboard;
             target = pBlackboard.target;
-            attackData = pBlackboard.attackData;
-            attackBehaviour = pBlackboard.attackBehaviour;
+            //attackData = pBlackboard.currentAttackData;
+            //attackBehaviour = pBlackboard.attackBehaviour;
             targetTag = pTargetTag;
 
             stateName = "Attack";
@@ -33,12 +34,12 @@ namespace SADungeon.FSM
         {
             base.Enter();
             attackStartTime = Time.time;
-            attackBehaviour?.Attack(target, attackData, targetTag);
+            blackboard.attackBehaviour?.Attack(target, blackboard.currentAttackData, targetTag);
         }
         
         public bool FinishedAttacking()
         {
-            return Time.time > attackStartTime + attackData.attackInterval;
+            return Time.time > attackStartTime + blackboard.currentAttackData.attackInterval;
         }
     }
 }

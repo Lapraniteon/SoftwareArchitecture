@@ -28,7 +28,7 @@ namespace SADungeon.FSM
         public float idleTime;
         
         [Header("Attack")] 
-        public AttackData attackData;
+        public AttackData currentAttackData;
         [HideInInspector] public AttackBehaviour attackBehaviour;
 
         #region "For enemies only"
@@ -64,6 +64,11 @@ namespace SADungeon.FSM
 
         // Wait time at a waypoint when in alert mode
         public float alertModeWaitingTime = 1f;
+
+        public ProjectileController projectilePrefab;
+
+        public AttackData bossDefaultAttackData;
+        public AttackData bossSlamAttackData;
 
         public void Initialize(NavMeshAgent agent)
         {

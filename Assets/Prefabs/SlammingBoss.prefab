@@ -25,6 +25,18 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
+      propertyPath: currentAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 629054937092b8c4a9c39248bfbafc1d, type: 2}
+    - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
+      propertyPath: bossSlamAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 629054937092b8c4a9c39248bfbafc1d, type: 2}
+    - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
+      propertyPath: bossDefaultAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: a9a50f1b1d96d9940b0fa8fadc6e488e, type: 2}
+    - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
       propertyPath: targetReachedThreshold
       value: 3
       objectReference: {fileID: 0}
