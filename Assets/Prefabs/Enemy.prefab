@@ -126,7 +126,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4075382939870948626}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
@@ -258,20 +258,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
-  moveSpeed: 0
+  currentTargetPosition: {x: 0, y: 0, z: 0}
+  currentMoveSpeed: 0
   rotateSpeed: 180
   stateOwnerTransform: {fileID: 2855506820605678679}
   attackInterval: 0.5
-  distanceThreshold: 0.2
+  targetReachedThreshold: 0.2
   playerModel: {fileID: 0}
   idleTime: 0
-  stateText: {fileID: 0}
   attackData: {fileID: 0}
   attackBehaviour: {fileID: 0}
   isEnemy: 1
   target: {fileID: 0}
-  waypoints: []
+  patrolWaypoints: []
   waitingTimes: []
   waypointIndex: 0
   waitingTime: 0
