@@ -77,8 +77,14 @@ namespace SADungeon.Inventory
             {
                 return itemSortingStrategies[strategyIndex].GetSortedItems(items);
             }
+        }*/
+        
+        public Item[] GetItems()
+        {
+            return items.ToArray();
         }
 
+        /*
         // Sets the current sorting strategy by index.
         public void SetSortingStrategy(int pIndex)
         {
