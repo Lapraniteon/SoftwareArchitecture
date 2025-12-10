@@ -4,7 +4,7 @@ public class RangedAttackBehaviour : AttackBehaviour
 {
     
     [SerializeField] 
-    private ProjectileController projectilePrefab; // Projectile prefab to spawn
+    public ProjectileController projectilePrefab; // Projectile prefab to spawn
     
     public override void Attack(Transform target, AttackData attackData, string targetTag)
     {

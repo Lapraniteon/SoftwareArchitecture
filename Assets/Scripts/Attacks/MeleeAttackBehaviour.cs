@@ -7,7 +7,14 @@ public class MeleeAttackBehaviour : AttackBehaviour
 
     public override void Attack(Transform target, AttackData attackData, string targetTag)
     {
-        target.GetComponent<PlayerModel>()?.GetHit(attackData);
-        target.GetComponent<EnemyController>()?.GetHit(attackData);
+        switch (targetTag)
+        {
+            case Tags.Player:
+                target.GetComponent<PlayerModel>()?.GetHit(attackData);
+                break;
+            case Tags.Enemy:
+                target.GetComponent<EnemyController>()?.GetHit(attackData);
+                break;
+        }
     }
 }
