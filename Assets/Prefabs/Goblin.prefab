@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: distanceThreshold
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
+      propertyPath: targetReachedThreshold
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2855506820605678679, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.1999998
