@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SADungeon.Inventory
@@ -21,6 +22,9 @@ namespace SADungeon.Inventory
         // Public read-only property to access a copy of the items list.
         public Item[] Items => items.ToArray();
 
+        public event Action<Item> onItemAdded;
+        public event Action<Item> onItemRemoved;
+
         // MonoBehaviour-based sorting strategies.
         // [SerializeField]
         // private ItemSortingStrategy[] itemSortingStrategies;
@@ -41,7 +45,9 @@ namespace SADungeon.Inventory
             items = new List<Item>();
             foreach (ItemData itemData in itemDatas)
             {
-                items.Add(itemData.CreateItem()); // Create an item from its data.
+                Item newItem = itemData.CreateItem();
+                items.Add(newItem); // Create an item from its data.
+                onItemAdded?.Invoke(newItem);
             }
         }
 
@@ -49,12 +55,24 @@ namespace SADungeon.Inventory
         public void AddItem(Item item)
         {
             items.Add(item);
+            onItemAdded?.Invoke(item);
         }
 
         // Removes an item from the inventory.
-        public void RemoveItem(Item item)
+        public bool RemoveItem(Item item)
         {
-            items.Remove(item);
+            if (items.Any(pItem => pItem.Id.Equals(item.Id)))
+            {
+                Item existingItem = items.FirstOrDefault(i => i.Id == item.Id);
+                if (existingItem == null)
+                    return false;
+                
+                items.Remove(existingItem);
+                onItemRemoved?.Invoke(item);
+                return true;
+            }
+
+            return false;
         }
         
         /*

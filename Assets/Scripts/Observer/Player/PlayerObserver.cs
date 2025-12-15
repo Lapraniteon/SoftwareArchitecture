@@ -20,6 +20,8 @@ namespace SADungeon.Player
             PlayerModel.onPlayerHit += OnPlayerHit;
             PlayerModel.onPlayerDead += OnPlayerDead;
             PlayerModel.onPlayerLevelUp += OnPlayerLevelUp;
+            PlayerModel.onPlayerHeal += OnPlayerHeal;
+            PlayerModel.onPlayerHealthChanged += OnPlayerHealthChanged;
         }
 
         protected void OnDisable()
@@ -29,6 +31,8 @@ namespace SADungeon.Player
             PlayerModel.onPlayerHit -= OnPlayerHit;
             PlayerModel.onPlayerDead -= OnPlayerDead;
             PlayerModel.onPlayerLevelUp -= OnPlayerLevelUp;
+            PlayerModel.onPlayerHeal -= OnPlayerHeal;
+            PlayerModel.onPlayerHealthChanged -= OnPlayerHealthChanged;
         }
 
         protected virtual void OnPlayerInit(Player player)
@@ -52,6 +56,16 @@ namespace SADungeon.Player
         }
 
         protected virtual void OnPlayerXPGained(Player player)
+        {
+
+        }
+        
+        protected virtual void OnPlayerHeal(Player player)
+        {
+
+        }
+        
+        protected virtual void OnPlayerHealthChanged(Player player)
         {
 
         }

@@ -40,7 +40,7 @@ public class GroundPickupEventData : EventData
     public GameObject pickupObject;
     public GroundPickupEventData(Item pItem, GameObject pPickupObject)
     {
-        name = "EnemyDieEvent";
+        name = "GroundPickupEvent";
         item = pItem;
         pickupObject = pPickupObject;
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,8 @@ public class GlobalInputManager : MonoBehaviour
     private bool _inventoryEnabled;
     public UnityEvent onInventoryEnable = new();
     public UnityEvent onInventoryDisable = new();
+
+    public static event Action onHealButtonPressed;
     
     private void Update()
     {
@@ -23,5 +26,8 @@ public class GlobalInputManager : MonoBehaviour
                 onInventoryEnable.Invoke();
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.H))
+            onHealButtonPressed?.Invoke();
     }
 }

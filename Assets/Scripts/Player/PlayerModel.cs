@@ -1,4 +1,5 @@
 using System;
+using SADungeon.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,8 +18,47 @@ namespace SADungeon.Player
         public static event Action<Player> onPlayerHit;
         public static event Action<Player> onPlayerDead;
         public static event Action<Player> onPlayerLevelUp;
+        public static event Action<Player> onPlayerHeal;
+        public static event Action<Player> onPlayerHealthChanged;
 
         private NavMeshAgent navMeshAgent;
+
+        [SerializeField] private ItemData currentHealingItem;
+
+        private void OnEnable()
+        {
+            GlobalInputManager.onHealButtonPressed += OnHealButtonPressed;
+        }
+        
+        private void OnDisable()
+        {
+            GlobalInputManager.onHealButtonPressed -= OnHealButtonPressed;
+        }
+
+        private void OnHealButtonPressed()
+        {
+            Debug.Log("Healing player");
+            
+            if (currentHealingItem == null)
+            {
+                Debug.LogError("No healing item selected.");
+                return;
+            }
+
+            if (player.currentHP >= player.MaxHP) // Don't heal if already max health
+                return;
+            
+            Debug.Log("Healing player 2");
+            
+            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItem.CreateItem()))
+            {
+                // Healing was successful
+                player.currentHP += currentHealingItem.healing;
+                if (player.currentHP > player.MaxHP) player.currentHP = player.MaxHP;
+                onPlayerHeal?.Invoke(player);
+                onPlayerHealthChanged?.Invoke(player);
+            }
+        }
 
         private void Start()
         {
@@ -74,6 +114,7 @@ namespace SADungeon.Player
             player.currentHP -= attackData.damage;
 
             onPlayerHit?.Invoke(player);
+            onPlayerHealthChanged?.Invoke(player);
 
             if (player.currentHP <= 0f)
             {
