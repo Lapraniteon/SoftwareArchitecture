@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e40cb3d253dacd4c97bca5d7358dd1b, type: 3}
-  m_Name: NormalAttack
+  m_Name: RangedNormalAttack
   m_EditorClassIdentifier: 
-  damage: 1
-  attackInterval: 1
-  vfx: {fileID: 3867648651320298794, guid: e616cd467360dad41bdbc42685a07692, type: 3}
+  damage: 0
+  attackInterval: 0

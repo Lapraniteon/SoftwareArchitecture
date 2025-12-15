@@ -34,7 +34,7 @@ namespace SADungeon.FSM
         {
             base.Enter();
             attackStartTime = Time.time;
-            blackboard.attackBehaviour?.Attack(target, blackboard.currentAttackData, targetTag);
+            blackboard.attackBehaviour?.Attack(blackboard.stateOwnerTransform, target, blackboard.currentAttackData, targetTag);
         }
         
         public bool FinishedAttacking()

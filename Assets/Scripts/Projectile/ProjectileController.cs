@@ -1,3 +1,4 @@
+using System;
 using SADungeon.Enemy;
 using SADungeon.Player;
 using UnityEngine;
@@ -47,12 +48,14 @@ public class ProjectileController : MonoBehaviour
             Destroy(gameObject);
             EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
             enemyController?.GetHit(_attackData);
+            AttackBehaviour.SpawnAttackVFX(collision.transform, _attackData);
         }
         if (_targetTag == Tags.Player)
         {
             Destroy(gameObject);
             PlayerModel playerModel = collision.gameObject.GetComponent<PlayerModel>();
             playerModel?.GetHit(_attackData);
+            AttackBehaviour.SpawnAttackVFX(collision.transform, _attackData);
         }
     }
 }
