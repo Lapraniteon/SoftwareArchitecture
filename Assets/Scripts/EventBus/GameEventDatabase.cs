@@ -57,26 +57,3 @@ public class GroundPickupEventData : EventData
         }
     }
 }
-
-public class InventorySingletonInitializedEventData : EventData
-{
-    public Inventory inventory;
-
-    public InventorySingletonInitializedEventData(Inventory pInventory)
-    {
-        name = "InventorySingletonInitializedEvent";
-        inventory = pInventory;
-    }
-    
-    //Overriding ToString method to display event information for debugging
-    public override string ToString()
-    {
-        if (inventory == null)
-            return "Inventory is null";
-        else
-        {
-            return "Event name: " + name + "\n" +
-                   "Inventory initialized.";
-        }
-    }
-}

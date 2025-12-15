@@ -32,8 +32,7 @@ namespace SADungeon.Inventory
             
             Debug.Log("Hi");
             
-            //int amount = inventory.GetItems().Count(_ => item.Id.Equals(itemToCheck.id));
-            int amount = inventory.Items.Length;
+            int amount = inventory.GetItems().Count(_ => item.Id.Equals(itemToCheck.id));
             
             Debug.Log(amount);
             

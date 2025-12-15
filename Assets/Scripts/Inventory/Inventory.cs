@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace SADungeon.Inventory
@@ -58,10 +59,20 @@ namespace SADungeon.Inventory
         }
 
         // Removes an item from the inventory.
-        public void RemoveItem(Item item)
+        public bool RemoveItem(Item item)
         {
-            items.Remove(item);
-            onItemRemoved?.Invoke(item);
+            if (items.Any(pItem => pItem.Id.Equals(item.Id)))
+            {
+                Item existingItem = items.FirstOrDefault(i => i.Id == item.Id);
+                if (existingItem == null)
+                    return false;
+                
+                items.Remove(existingItem);
+                onItemRemoved?.Invoke(item);
+                return true;
+            }
+
+            return false;
         }
         
         /*

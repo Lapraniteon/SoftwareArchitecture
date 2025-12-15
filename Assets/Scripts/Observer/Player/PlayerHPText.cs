@@ -19,7 +19,7 @@ namespace SADungeon.Player
             UpdateHPText(player);
         }
 
-        protected override void OnPlayerHit(Player player)
+        protected override void OnPlayerHealthChanged(Player player)
         {
             UpdateHPText(player);
         }
