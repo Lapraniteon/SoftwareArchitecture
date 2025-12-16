@@ -5,4 +5,7 @@ public class AttackData : ScriptableObject
 {
     public int damage;
     public float attackInterval;
+    
+    [Header("VFX")]
+    public ParticleSystem vfx;
 }

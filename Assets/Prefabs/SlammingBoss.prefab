@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
       propertyPath: bossDefaultAttackData
       value: 
-      objectReference: {fileID: 11400000, guid: a9a50f1b1d96d9940b0fa8fadc6e488e, type: 2}
+      objectReference: {fileID: 11400000, guid: 1d9132d7d6d516f4fa12dfdbb8f08de2, type: 2}
     - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
       propertyPath: targetReachedThreshold
       value: 3
