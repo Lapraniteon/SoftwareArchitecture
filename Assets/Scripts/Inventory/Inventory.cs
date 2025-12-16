@@ -24,6 +24,7 @@ namespace SADungeon.Inventory
 
         public event Action<Item> onItemAdded;
         public event Action<Item> onItemRemoved;
+        public event Action onItemUpdated;
 
         // MonoBehaviour-based sorting strategies.
         // [SerializeField]
@@ -56,6 +57,7 @@ namespace SADungeon.Inventory
         {
             items.Add(item);
             onItemAdded?.Invoke(item);
+            onItemUpdated?.Invoke();
         }
 
         // Removes an item from the inventory.
@@ -69,6 +71,7 @@ namespace SADungeon.Inventory
                 
                 items.Remove(existingItem);
                 onItemRemoved?.Invoke(item);
+                onItemUpdated?.Invoke();
                 return true;
             }
 

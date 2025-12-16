@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SADungeon.Inventory
 {
 
-    public class InventoryObserver : MonoBehaviour
+    public abstract class InventoryObserver : MonoBehaviour
     {
 
         [SerializeField] protected Inventory inventory;
@@ -25,8 +25,8 @@ namespace SADungeon.Inventory
             if (inventory == null)
                 return;
             
-            inventory.onItemAdded += OnItemAdded;
-            inventory.onItemRemoved += OnItemRemoved;
+            inventory.onItemAdded -= OnItemAdded;
+            inventory.onItemRemoved -= OnItemRemoved;
         }
         
         protected virtual void OnItemAdded(Item item)
