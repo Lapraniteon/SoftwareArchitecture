@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   attackInterval: 5
+  vfx: {fileID: 7436226445981027059, guid: f29136bd5350bfb4b92bc3faa85dc1d9, type: 3}

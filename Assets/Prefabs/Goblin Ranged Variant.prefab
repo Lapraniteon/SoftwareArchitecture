@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin Ranged Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4268472261902986800, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
+      propertyPath: currentAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d9132d7d6d516f4fa12dfdbb8f08de2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
