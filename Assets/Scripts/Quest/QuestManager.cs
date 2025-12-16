@@ -15,23 +15,11 @@ namespace SADungeon.Quest
 
         public Quest currentQuest;
 
-        [Header("Temporary")] 
-        [SerializeField] private Quest questToStart;
-
         private void Awake()
         {
             if (Instance == null) Instance = this;
             else Destroy(gameObject);
         }
-        
-        #region TEMPORARY
-
-        private void Start()
-        {
-            StartQuest(questToStart);
-        }
-        
-        #endregion
 
         public bool StartQuest(Quest quest)
         {
