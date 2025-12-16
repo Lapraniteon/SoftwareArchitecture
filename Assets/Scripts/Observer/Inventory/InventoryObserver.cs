@@ -7,7 +7,7 @@ namespace SADungeon.Inventory
     public abstract class InventoryObserver : MonoBehaviour
     {
 
-        [SerializeField] protected Inventory inventory;
+        protected Inventory inventory;
 
         protected void OnEnable()
         {

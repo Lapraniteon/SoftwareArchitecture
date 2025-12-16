@@ -47,7 +47,7 @@ namespace SADungeon.Quest
         }
 
 
-        protected override string ToDisplayString()
+        public override string ToDisplayString()
         {
             return $"Collect {amountToCollect} {itemToCollectData.itemName} ({_currentAmount}/{amountToCollect})";
         }

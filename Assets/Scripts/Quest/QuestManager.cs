@@ -8,8 +8,10 @@ namespace SADungeon.Quest
     {
         public static QuestManager Instance { get; private set; }
 
+        public event Action<Quest> onQuestInit;
         public event Action<Quest> onQuestProgress;
         public event Action<Quest> onQuestCompleted;
+        public event Action<Quest> onQuestDestroyed;
 
         public Quest currentQuest;
 
@@ -40,8 +42,12 @@ namespace SADungeon.Quest
 
             currentQuest = newQuest;
             
+            currentQuest.onQuestInit += onQuestInit;
             currentQuest.onQuestProgress += onQuestProgress;
             currentQuest.onQuestCompleted += onQuestCompleted;
+            currentQuest.onQuestDestroyed += onQuestDestroyed;
+            
+            onQuestInit?.Invoke(newQuest);
 
             return true;
         }
@@ -51,8 +57,12 @@ namespace SADungeon.Quest
             if (currentQuest == null)
                 return;
             
+            currentQuest.onQuestInit -= onQuestInit;
             currentQuest.onQuestProgress -= onQuestProgress;
             currentQuest.onQuestCompleted -= onQuestCompleted;
+            currentQuest.onQuestDestroyed -= onQuestDestroyed;
+            
+            onQuestDestroyed?.Invoke(currentQuest);
             
             Destroy(currentQuest.gameObject);
 

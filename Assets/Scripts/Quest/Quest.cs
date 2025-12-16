@@ -9,10 +9,10 @@ namespace SADungeon.Quest
 
         public bool completed = false;
         
-        protected event Action<Quest> onQuestInit;
+        public event Action<Quest> onQuestInit;
         public event Action<Quest> onQuestProgress;
         public event Action<Quest> onQuestCompleted;
-        protected event Action<Quest> onQuestDestroyed;
+        public event Action<Quest> onQuestDestroyed;
 
         private void OnEnable()
         {
@@ -42,7 +42,7 @@ namespace SADungeon.Quest
             onQuestCompleted?.Invoke(quest);
         }
         
-        protected abstract string ToDisplayString();
+        public abstract string ToDisplayString();
 
         public sealed override string ToString()
         {
