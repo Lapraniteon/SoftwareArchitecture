@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0b3a02b53c25144a6c6dfadec0ff11, type: 3}
   m_Name: GoblinEnemy
   m_EditorClassIdentifier: 
+  id: goblin
+  enemyName: Goblin
   maxHP: 10
   speed: 1
   money: 1

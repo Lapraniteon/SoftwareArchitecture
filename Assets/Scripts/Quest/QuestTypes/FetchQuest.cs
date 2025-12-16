@@ -9,8 +9,6 @@ namespace SADungeon.Quest
     public class FetchQuest : Quest
     {
 
-        [HideInInspector] public QuestManager questManager;
-        
         [SerializeField] private ItemData itemToCollectData;
         private Item itemToCollect;
         [SerializeField] private int amountToCollect;

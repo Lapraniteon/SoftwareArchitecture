@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentQuest: {fileID: 0}
-  questToStart: {fileID: 6279764078116885506, guid: d8f454eb364bc364b8f3c9ce4643381d, type: 3}
+  questToStart: {fileID: 3847317675482754932, guid: fb81bb0b5f2be9e4193efaf9bea390be, type: 3}
 --- !u!4 &626601846
 Transform:
   m_ObjectHideFlags: 0
@@ -4010,12 +4010,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087049990456519194, guid: b30069e8eb33d1849b1b42bf94fe5bee, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2431242591726384934, guid: b30069e8eb33d1849b1b42bf94fe5bee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b30069e8eb33d1849b1b42bf94fe5bee, type: 3}
 --- !u!1 &2081637416
 GameObject:
