@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3d04c91a404e66e47a26c160a9598287, type: 3}
@@ -56,6 +57,15 @@ PrefabInstance:
       value: RockMid_004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d04c91a404e66e47a26c160a9598287, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -927672495600417955}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d04c91a404e66e47a26c160a9598287, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6954946567129244015}
   m_SourcePrefab: {fileID: 100100000, guid: 3d04c91a404e66e47a26c160a9598287, type: 3}
 --- !u!1 &3483445338781231470 stripped
 GameObject:
@@ -70,9 +80,33 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3483445338781231470}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6373735161380404331, guid: 3d04c91a404e66e47a26c160a9598287, type: 3}
+--- !u!208 &-6954946567129244015
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3483445338781231470}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 4.6650004, y: 1.365, z: 5.5200005}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.455, y: 1.3000001, z: 0.083000004}
+  m_TimeToStationary: 0.5

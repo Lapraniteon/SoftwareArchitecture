@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c54d91e7811328945b3e102fddad0cac, type: 3}
@@ -56,6 +57,15 @@ PrefabInstance:
       value: RockBig_003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c54d91e7811328945b3e102fddad0cac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6857985237120394683}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c54d91e7811328945b3e102fddad0cac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3793257395051420571}
   m_SourcePrefab: {fileID: 100100000, guid: c54d91e7811328945b3e102fddad0cac, type: 3}
 --- !u!1 &4517548388670656753 stripped
 GameObject:
@@ -70,9 +80,33 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4517548388670656753}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8732738039582326827, guid: c54d91e7811328945b3e102fddad0cac, type: 3}
+--- !u!208 &-3793257395051420571
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517548388670656753}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 15.4210005, y: 12.729001, z: 14.544001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.101, y: 12.452001, z: -0.24300002}
+  m_TimeToStationary: 0.5

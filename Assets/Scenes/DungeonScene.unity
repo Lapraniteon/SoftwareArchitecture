@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickPosition: {x: 0, y: 0, z: 0}
+  clickIndicatorVFX: {fileID: 5566154553408416693, guid: 161cd064c475d7744860a95cf41b36f5, type: 3}
   onRaycastHit:
     m_PersistentCalls:
       m_Calls:
@@ -887,7 +888,7 @@ GameObject:
   - component: {fileID: 100999103}
   - component: {fileID: 100999102}
   - component: {fileID: 100999101}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -924,7 +925,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1046,6 +1047,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 721211878020432260, guid: 9d6b1f7d376706c40b48560df4e26d87, type: 3}
   m_PrefabInstance: {fileID: 496514725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &193055319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5522109789475942688, guid: 7156276d23dd980459f6e635c51d0348, type: 3}
+  m_PrefabInstance: {fileID: 965546034}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &207309210
 GameObject:
@@ -1522,7 +1528,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 194390854609594543, guid: 9b01f039bb729c3419c43cb8a1e167d8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 999677276}
   m_SourcePrefab: {fileID: 100100000, guid: 9b01f039bb729c3419c43cb8a1e167d8, type: 3}
 --- !u!4 &327445334 stripped
 Transform:
@@ -1729,8 +1738,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 59495214}
-  - {fileID: 2144569393}
-  - {fileID: 1081860205}
   - {fileID: 1539719313}
   - {fileID: 626601846}
   - {fileID: 1207067824}
@@ -1881,6 +1888,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
   m_PrefabInstance: {fileID: 882478645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &361774653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 194390854609594543, guid: 9b01f039bb729c3419c43cb8a1e167d8, type: 3}
+  m_PrefabInstance: {fileID: 326349801}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &382811004
 GameObject:
@@ -2073,6 +2085,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 382811005}
     m_Modifications:
+    - target: {fileID: -7193777035769484994, guid: a80936f3e0ebc564689c598da1fcbeaa, type: 3}
+      propertyPath: m_Shape
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7193777035769484994, guid: a80936f3e0ebc564689c598da1fcbeaa, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7193777035769484994, guid: a80936f3e0ebc564689c598da1fcbeaa, type: 3}
+      propertyPath: m_Extents.z
+      value: 3.8160002
+      objectReference: {fileID: 0}
     - target: {fileID: 362233261922440916, guid: a80936f3e0ebc564689c598da1fcbeaa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.902483
@@ -2127,6 +2151,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5181858887184935834, guid: 7156276d23dd980459f6e635c51d0348, type: 3}
   m_PrefabInstance: {fileID: 965546034}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &421128449
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193055319}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.81, y: 0.37100002, z: 0.81}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.013, y: 0.37100002, z: -0.003}
+  m_TimeToStationary: 0.5
 --- !u!1001 &431526302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2967,7 +3007,7 @@ GameObject:
   - component: {fileID: 792143172}
   - component: {fileID: 792143170}
   - component: {fileID: 792143175}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3100,7 +3140,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3734,6 +3774,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RockMid_002
       objectReference: {fileID: 0}
+    - target: {fileID: 6763924414060902283, guid: 250aacdb4e1d6ef4daccb60cfe6f10ce, type: 3}
+      propertyPath: m_Center.y
+      value: 4.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763924414060902283, guid: 250aacdb4e1d6ef4daccb60cfe6f10ce, type: 3}
+      propertyPath: m_Extents.x
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763924414060902283, guid: 250aacdb4e1d6ef4daccb60cfe6f10ce, type: 3}
+      propertyPath: m_Extents.y
+      value: 10.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763924414060902283, guid: 250aacdb4e1d6ef4daccb60cfe6f10ce, type: 3}
+      propertyPath: m_Extents.z
+      value: 4.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3851,7 +3907,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5522109789475942688, guid: 7156276d23dd980459f6e635c51d0348, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 421128449}
   m_SourcePrefab: {fileID: 100100000, guid: 7156276d23dd980459f6e635c51d0348, type: 3}
 --- !u!1 &980593167
 GameObject:
@@ -4081,6 +4140,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 718691237160727061, guid: 9b01f039bb729c3419c43cb8a1e167d8, type: 3}
   m_PrefabInstance: {fileID: 326349801}
   m_PrefabAsset: {fileID: 0}
+--- !u!208 &999677276
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361774653}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.27, y: 0.749, z: 1.27}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.17300001, y: 0.726, z: -0.08400001}
+  m_TimeToStationary: 0.5
 --- !u!224 &1010094609 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 329854443687561884, guid: 5dc43ffe912d0aa4dbe4ed37fb4ce4a2, type: 3}
@@ -4174,7 +4249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 332307013}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1081860206
 MonoBehaviour:
@@ -5269,6 +5344,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 382811005}
     m_Modifications:
+    - target: {fileID: -6954946567129244015, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
+      propertyPath: m_Center.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6954946567129244015, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
+      propertyPath: m_Center.z
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: -6954946567129244015, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
+      propertyPath: m_Extents.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6954946567129244015, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
+      propertyPath: m_Extents.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3483445338781231470, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
       propertyPath: m_Name
       value: RockMid_004 (1)
@@ -5871,6 +5962,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 382811005}
     m_Modifications:
+    - target: {fileID: -6954946567129244015, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
+      propertyPath: m_Extents.x
+      value: 4.19
+      objectReference: {fileID: 0}
+    - target: {fileID: -6954946567129244015, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
+      propertyPath: m_Extents.z
+      value: 4.19
+      objectReference: {fileID: 0}
     - target: {fileID: 3483445338781231470, guid: d325e0cfc6c108a43b390d48baa2bce5, type: 3}
       propertyPath: m_Name
       value: RockMid_004
@@ -6576,7 +6675,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 332307013}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2144569394
 MonoBehaviour:
@@ -6599,6 +6698,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1081860205}
+  - {fileID: 2144569393}
   - {fileID: 571303790}
   - {fileID: 207309211}
   - {fileID: 332307013}
