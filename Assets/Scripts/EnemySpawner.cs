@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private float timeBetweenWaves;
 
     private Coroutine _spawnCoroutine;
+    [SerializeField] [NaughtyAttributes.ReadOnly]
     private bool _isSpawning;
     
     // Radii inbetween which to spawn
@@ -49,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
         
     }
     
-    private void StartSpawning()
+    public void StartSpawning()
     {
         _isSpawning = true;
         if (_spawnCoroutine == null)
@@ -58,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void StopSpawning()
+    public void StopSpawning()
     {
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
