@@ -11,6 +11,8 @@ namespace SADungeon.Enemy
     [CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects/EnemyData")]
     public class EnemyData : ScriptableObject
     {
+        public string id;
+        public string enemyName;
         public int maxHP;
         public float speed;
         public int money;
@@ -20,13 +22,19 @@ namespace SADungeon.Enemy
 
         public Enemy CreateEnemy()
         {
-            return new Enemy(maxHP, speed, money, xp, dropTable);
+            return new Enemy(this);
         }
     }
 
     [Serializable]
     public class Enemy
     {
+        private string id;
+        public string Id => id;
+        
+        public string EnemyName => enemyName;
+        private string enemyName;
+        
         public int MaxHP => maxHP;
         private int maxHP;
         public int currentHP;
@@ -40,14 +48,16 @@ namespace SADungeon.Enemy
         public ItemData[] DropTable => dropTable;
         private ItemData[] dropTable;
 
-        public Enemy(int pMaxHP, float pSpeed, int pMoney, int pXP, ItemData[] pDropTable)
+        public Enemy(EnemyData enemyData)
         {
-            maxHP = pMaxHP;
-            currentHP = pMaxHP;
-            speed = pSpeed;
-            money = pMoney;
-            xp = pXP;
-            dropTable = pDropTable;
+            id = enemyData.id;
+            enemyName = enemyData.enemyName;
+            maxHP = enemyData.maxHP;
+            currentHP = enemyData.maxHP;
+            speed = enemyData.speed;
+            money = enemyData.money;
+            xp = enemyData.xp;
+            dropTable = enemyData.dropTable;
         }
     }
 }

@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0b3a02b53c25144a6c6dfadec0ff11, type: 3}
   m_Name: BigGoblinEnemy
   m_EditorClassIdentifier: 
+  id: goblin_big
+  enemyName: Big Goblin
   maxHP: 30
   speed: 0.8
   money: 2
   xp: 20
+  dropTable: []
