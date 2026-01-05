@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4335819323326828534}
   - component: {fileID: 1521809944822557819}
   - component: {fileID: 1973431668521459968}
+  - component: {fileID: 991644885477268673}
   m_Layer: 0
   m_Name: Ground Pickup
   m_TagString: PickupItem
@@ -123,3 +124,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 56d758ef797e23f4f966ad62c635ce80, type: 2}
   groundPickupEvent: {fileID: 11400000, guid: 314f9a09c61f7224bba55236a25ba094, type: 2}
+--- !u!54 &991644885477268673
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898123412425016589}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

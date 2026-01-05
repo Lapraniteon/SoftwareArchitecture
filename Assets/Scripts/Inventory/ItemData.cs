@@ -23,7 +23,9 @@ namespace SADungeon.Inventory
 
         [Header("Visuals")]
         public Sprite itemIcon;
-        public GameObject itemModel;
+        
+        [Header("Drop")]
+        public GroundPickup groundPickupPrefab;
 
         public Item CreateItem()
         {
@@ -56,7 +58,8 @@ namespace SADungeon.Inventory
 
         [Header("Visuals")]
         public Sprite itemIcon;
-        public GameObject itemModel;
+        
+        public GroundPickup groundPickupPrefab;
 
         public Item(ItemData itemData)
         {
@@ -67,7 +70,7 @@ namespace SADungeon.Inventory
             healing = itemData.healing;
 
             itemIcon = itemData.itemIcon;
-            itemModel = itemData.itemModel;
+            groundPickupPrefab = itemData.groundPickupPrefab;
         }
     }
 }
