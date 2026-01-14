@@ -56,14 +56,14 @@ namespace SADungeon.FSM
             attackState.transitions.Add(new Transition(attackState.FinishedAttacking, alignToState));
 
 
-            /*idleState.onEnter += () => { animator.SetBool("Idle", true); };
-            idleState.onExit += () => { animator.SetBool("Idle", false); };
-            moveToState.onEnter += () => { animator.SetBool("Chase", true); };
-            moveToState.onExit += () => { animator.SetBool("Chase", false); };
-            alignToState.onEnter += () => { animator.SetBool("Aim", true); };
-            alignToState.onExit += () => { animator.SetBool("Aim", false); };
-            attackState.onEnter += () => { animator.SetBool("Attack", true); };
-            attackState.onExit += () => { animator.SetBool("Attack", false); };*/
+            /*idleState.onEnter += () => { Debug.Log("Enter Idle"); };
+            idleState.onExit += () => { Debug.Log("Exit Idle"); };
+            moveToState.onEnter += () => { Debug.Log("Enter Move"); };
+            moveToState.onExit += () => { Debug.Log("Exit Move"); };
+            alignToState.onEnter += () => { Debug.Log("Enter Align"); };
+            alignToState.onExit += () => { Debug.Log("Exit Align"); };
+            attackState.onEnter += () => { Debug.Log("Enter Attack"); };
+            attackState.onExit += () => { Debug.Log("Exit Attack"); };*/
 
             //Default state is idleState.
             currentState = idleState;

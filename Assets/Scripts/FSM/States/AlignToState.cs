@@ -43,12 +43,14 @@ namespace SADungeon.FSM
 
             // Rotate around the up axis based on direction and speed
             self.Rotate(self.up, rotationSign * rotationSpeed * Time.deltaTime);
+            
+            Debug.Log(Vector3.Dot(self.forward, direction));
         }
 
         //--------Helper Condition for Transitions to decide whether to transition to the next state
         public bool AlignedWithTarget()
         {
-            return Vector3.Dot(self.forward, direction) >= 0.95f;
+            return Vector3.Dot(self.forward, direction) >= 0.75f;
         }
 
         public bool TargetOutOfRange()
