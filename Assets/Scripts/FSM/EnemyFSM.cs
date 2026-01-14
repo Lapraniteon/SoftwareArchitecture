@@ -56,14 +56,15 @@ namespace SADungeon.FSM
             attackState.transitions.Add(new Transition(attackState.FinishedAttacking, alignToState));
 
 
-            /*idleState.onEnter += () => { Debug.Log("Enter Idle"); };
-            idleState.onExit += () => { Debug.Log("Exit Idle"); };
-            moveToState.onEnter += () => { Debug.Log("Enter Move"); };
-            moveToState.onExit += () => { Debug.Log("Exit Move"); };
-            alignToState.onEnter += () => { Debug.Log("Enter Align"); };
-            alignToState.onExit += () => { Debug.Log("Exit Align"); };
-            attackState.onEnter += () => { Debug.Log("Enter Attack"); };
-            attackState.onExit += () => { Debug.Log("Exit Attack"); };*/
+            // ANIMATION TRIGGERS CAN BE ADDED HERE
+            idleState.onEnter += () => { };
+            idleState.onExit += () => { };
+            moveToState.onEnter += () => { };
+            moveToState.onExit += () => { };
+            alignToState.onEnter += () => { };
+            alignToState.onExit += () => { };
+            attackState.onEnter += () => { };
+            attackState.onExit += () => { };
 
             //Default state is idleState.
             currentState = idleState;
