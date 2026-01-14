@@ -1,4 +1,5 @@
 using System;
+using SADungeon.Enemy;
 using SADungeon.Inventory;
 using TMPro;
 using UnityEngine;
@@ -80,7 +81,15 @@ namespace SADungeon.Player
             {
                 EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
 
-                player.currentXp += enemyDieEventData.enemy.XP;
+                ProcessXP(enemyDieEventData.enemy.XP);
+            }
+        }
+
+        public void ProcessXP(int amount)
+        {
+            if (player.level <= player.NextLevelUpData.Length)
+            {
+                player.currentXp += amount;
 
                 int previousLevel = player.level;
 
@@ -105,6 +114,7 @@ namespace SADungeon.Player
                 // Trigger level-up event if level increased
                 if (player.level > previousLevel)
                     onPlayerLevelUp?.Invoke(player);
+
             }
         }
 
