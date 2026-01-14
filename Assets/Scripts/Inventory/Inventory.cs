@@ -46,23 +46,27 @@ namespace SADungeon.Inventory
             items = new List<Item>();
             foreach (ItemData itemData in itemDatas)
             {
-                Item newItem = itemData.CreateItem();
-                items.Add(newItem); // Create an item from its data.
-                onItemAdded?.Invoke(newItem);
+                AddItem(itemData);
             }
         }
 
         // Adds an item to the inventory.
-        public void AddItem(Item item)
+        public void AddItem(ItemData itemData)
         {
+            Item item = itemData.CreateItem();
             items.Add(item);
             onItemAdded?.Invoke(item);
             onItemUpdated?.Invoke();
         }
+        
+        // Helper method for unit testing
+        public void RemoveItemVoid(ItemData itemData) => RemoveItem(itemData);
 
         // Removes an item from the inventory.
-        public bool RemoveItem(Item item)
+        public bool RemoveItem(ItemData itemData)
         {
+            Item item = itemData.CreateItem();
+            
             if (items.Any(pItem => pItem.Id.Equals(item.Id)))
             {
                 Item existingItem = items.FirstOrDefault(i => i.Id == item.Id);

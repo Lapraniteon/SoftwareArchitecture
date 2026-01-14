@@ -10,14 +10,14 @@ namespace SADungeon.Inventory
     /// </summary>
     public class ItemContainer : MonoBehaviour
     {
-        public static Action<Item> onGetItem;
+        public static Action<ItemData> onGetItem;
         [SerializeField]
         public ItemData itemData;
 
         public Item GiveItem()
         {
             Item item = itemData.CreateItem();
-            onGetItem?.Invoke(item);
+            onGetItem?.Invoke(itemData);
             return item;
         }
     }

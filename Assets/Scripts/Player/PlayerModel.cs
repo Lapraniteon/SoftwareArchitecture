@@ -4,6 +4,7 @@ using SADungeon.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace SADungeon.Player
 {
@@ -24,8 +25,9 @@ namespace SADungeon.Player
 
         private NavMeshAgent navMeshAgent;
 
+        [FormerlySerializedAs("currentHealingItem")]
         [Header("Healing")]
-        [SerializeField] private ItemData currentHealingItem;
+        [SerializeField] private ItemData currentHealingItemData;
         [SerializeField] private ParticleSystem healingVFX;
 
         private void OnEnable()
@@ -40,7 +42,7 @@ namespace SADungeon.Player
 
         private void OnHealButtonPressed()
         {
-            if (currentHealingItem == null)
+            if (currentHealingItemData == null)
             {
                 Debug.LogError("No healing item selected.");
                 return;
@@ -49,10 +51,10 @@ namespace SADungeon.Player
             if (player.currentHP >= player.MaxHP) // Don't heal if already max health
                 return;
             
-            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItem.CreateItem()))
+            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItemData))
             {
                 // Healing was successful
-                player.currentHP += currentHealingItem.healing;
+                player.currentHP += currentHealingItemData.healing;
                 if (player.currentHP > player.MaxHP) player.currentHP = player.MaxHP;
                 Instantiate(healingVFX, transform.position, Quaternion.identity);
                 onPlayerHeal?.Invoke(player);
