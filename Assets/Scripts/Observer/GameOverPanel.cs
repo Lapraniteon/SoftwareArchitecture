@@ -26,4 +26,9 @@ public class GameOverPanel : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
     }
+
+    public void RespawnButton()
+    {
+        GameManager.Instance.RestartGame();
+    }
 }
