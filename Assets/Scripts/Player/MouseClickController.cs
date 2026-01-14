@@ -7,6 +7,8 @@ public class MouseClickController : MonoBehaviour
     public Vector3 clickPosition;
     private Vector3 rayOrigin;
 
+    [SerializeField] private ParticleSystem clickIndicatorVFX;
+
     public UnityEvent<Vector3> onRaycastHit;
     
     void Update() { 
@@ -21,6 +23,7 @@ public class MouseClickController : MonoBehaviour
                 rayOrigin = mouseRay.origin;
                 
                 // Trigger an unity event to notify other scripts about the click here
+                Instantiate(clickIndicatorVFX, clickPosition, Quaternion.identity);
                 onRaycastHit.Invoke(clickPosition);
             } 
         } 

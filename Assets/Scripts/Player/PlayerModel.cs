@@ -23,7 +23,9 @@ namespace SADungeon.Player
 
         private NavMeshAgent navMeshAgent;
 
+        [Header("Healing")]
         [SerializeField] private ItemData currentHealingItem;
+        [SerializeField] private ParticleSystem healingVFX;
 
         private void OnEnable()
         {
@@ -37,8 +39,6 @@ namespace SADungeon.Player
 
         private void OnHealButtonPressed()
         {
-            Debug.Log("Healing player");
-            
             if (currentHealingItem == null)
             {
                 Debug.LogError("No healing item selected.");
@@ -48,13 +48,12 @@ namespace SADungeon.Player
             if (player.currentHP >= player.MaxHP) // Don't heal if already max health
                 return;
             
-            Debug.Log("Healing player 2");
-            
             if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItem.CreateItem()))
             {
                 // Healing was successful
                 player.currentHP += currentHealingItem.healing;
                 if (player.currentHP > player.MaxHP) player.currentHP = player.MaxHP;
+                Instantiate(healingVFX, transform.position, Quaternion.identity);
                 onPlayerHeal?.Invoke(player);
                 onPlayerHealthChanged?.Invoke(player);
             }

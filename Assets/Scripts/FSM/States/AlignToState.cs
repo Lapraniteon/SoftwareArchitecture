@@ -48,7 +48,7 @@ namespace SADungeon.FSM
         //--------Helper Condition for Transitions to decide whether to transition to the next state
         public bool AlignedWithTarget()
         {
-            return Vector3.Dot(self.forward, direction) >= 0.95f;
+            return Vector3.Dot(self.forward, direction) >= 0.75f;
         }
 
         public bool TargetOutOfRange()

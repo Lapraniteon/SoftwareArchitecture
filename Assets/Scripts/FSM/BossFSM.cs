@@ -64,14 +64,17 @@ namespace SADungeon.FSM
             throwingRocksState.transitions.Add(new Transition(throwingRocksState.BehaviourDurationExceeded, idleState));
 
 
-            /*idleState.onEnter += () => { animator.SetBool("Idle", true); };
-            idleState.onExit += () => { animator.SetBool("Idle", false); };
-            moveToState.onEnter += () => { animator.SetBool("Chase", true); };
-            moveToState.onExit += () => { animator.SetBool("Chase", false); };
-            alignToState.onEnter += () => { animator.SetBool("Aim", true); };
-            alignToState.onExit += () => { animator.SetBool("Aim", false); };
-            attackState.onEnter += () => { animator.SetBool("Attack", true); };
-            attackState.onExit += () => { animator.SetBool("Attack", false); };*/
+            // ANIMATION TRIGGERS CAN BE ADDED HERE
+            idleState.onEnter += () => { };
+            idleState.onExit += () => { };
+            moveToState.onEnter += () => { };
+            moveToState.onExit += () => { };
+            alignToState.onEnter += () => { };
+            alignToState.onExit += () => { };
+            stompState.onEnter += () => { };
+            stompState.onExit += () => { };
+            throwingRocksState.onEnter += () => { };
+            throwingRocksState.onExit += () => { };
 
             throwingRocksState.onEnter += () =>
             {

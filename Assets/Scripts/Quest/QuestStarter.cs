@@ -15,11 +15,14 @@ namespace SADungeon.Quest
         [Layer] [ShowIf("onTriggerEnter")]
         [SerializeField] private int layer;
 
+        private bool _triggered;
+
         public void StartQuest()
         {
-            if (questToStart == null) 
+            if (questToStart == null || _triggered)
                 return;
-            
+
+            _triggered = true;
             QuestManager.Instance.StartQuest(questToStart);
         }
 

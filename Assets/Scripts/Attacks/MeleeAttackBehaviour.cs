@@ -15,6 +15,7 @@ public class MeleeAttackBehaviour : AttackBehaviour
                 break;
             case Tags.Enemy:
                 target.GetComponent<EnemyController>()?.GetHit(attackData);
+                SpawnAttackVFX(target, target, attackData);
                 break;
         }
     }

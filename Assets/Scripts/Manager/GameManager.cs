@@ -2,6 +2,7 @@ using System;
 using SADungeon.Player;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,5 +30,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player Dead");
 
         Time.timeScale = 0f;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

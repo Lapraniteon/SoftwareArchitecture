@@ -18,4 +18,4 @@ MonoBehaviour:
   defense: 0
   healing: 5
   itemIcon: {fileID: 1959256605, guid: 593d9f17fa4114010bab674570216743, type: 3}
-  itemModel: {fileID: 0}
+  groundPickupPrefab: {fileID: 1443359127262492393, guid: b8eaa970dc0dd244e84c6debf58d2b8c, type: 3}
