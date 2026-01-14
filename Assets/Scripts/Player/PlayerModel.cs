@@ -1,8 +1,10 @@
 using System;
+using SADungeon.Enemy;
 using SADungeon.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace SADungeon.Player
 {
@@ -23,8 +25,9 @@ namespace SADungeon.Player
 
         private NavMeshAgent navMeshAgent;
 
+        [FormerlySerializedAs("currentHealingItem")]
         [Header("Healing")]
-        [SerializeField] private ItemData currentHealingItem;
+        [SerializeField] private ItemData currentHealingItemData;
         [SerializeField] private ParticleSystem healingVFX;
 
         private void OnEnable()
@@ -39,7 +42,7 @@ namespace SADungeon.Player
 
         private void OnHealButtonPressed()
         {
-            if (currentHealingItem == null)
+            if (currentHealingItemData == null)
             {
                 Debug.LogError("No healing item selected.");
                 return;
@@ -48,10 +51,10 @@ namespace SADungeon.Player
             if (player.currentHP >= player.MaxHP) // Don't heal if already max health
                 return;
             
-            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItem.CreateItem()))
+            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItemData))
             {
                 // Healing was successful
-                player.currentHP += currentHealingItem.healing;
+                player.currentHP += currentHealingItemData.healing;
                 if (player.currentHP > player.MaxHP) player.currentHP = player.MaxHP;
                 Instantiate(healingVFX, transform.position, Quaternion.identity);
                 onPlayerHeal?.Invoke(player);
@@ -80,7 +83,15 @@ namespace SADungeon.Player
             {
                 EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
 
-                player.currentXp += enemyDieEventData.enemy.XP;
+                ProcessXP(enemyDieEventData.enemy.XP);
+            }
+        }
+
+        public void ProcessXP(int amount)
+        {
+            if (player.level <= player.NextLevelUpData.Length)
+            {
+                player.currentXp += amount;
 
                 int previousLevel = player.level;
 
@@ -105,6 +116,7 @@ namespace SADungeon.Player
                 // Trigger level-up event if level increased
                 if (player.level > previousLevel)
                     onPlayerLevelUp?.Invoke(player);
+
             }
         }
 

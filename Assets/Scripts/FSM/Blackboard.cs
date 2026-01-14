@@ -81,7 +81,7 @@ namespace SADungeon.FSM
             navMeshAgent = agent;
             
             if (playerModel == null)
-                Debug.LogError("No player model found.");
+                Debug.LogError("No player model found. Target remains empty.");
 
             target = playerModel?.transform;
         }

@@ -34,6 +34,9 @@ namespace SADungeon.FSM
 
         public bool IsTargetInRange()
         {
+            if (target == null)
+                return false;
+            
             return (Vector3.Distance(self.transform.position, target.transform.position) <= chaseRange);
         }
 

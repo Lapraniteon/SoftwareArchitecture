@@ -28,6 +28,11 @@ namespace SADungeon.Quest
             onQuestDestroyed?.Invoke(this);
         }
 
+        public virtual void ProgressQuest(int amount)
+        {
+            
+        }
+        
         protected abstract void Kill();
 
         protected void BroadcastProgressQuest(Quest quest)
