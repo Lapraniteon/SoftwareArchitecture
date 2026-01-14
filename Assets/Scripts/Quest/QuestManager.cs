@@ -21,13 +21,12 @@ namespace SADungeon.Quest
             else Destroy(gameObject);
         }
 
-        public bool StartQuest(Quest quest)
+        public void StartQuest(Quest quest)
         {
             if (currentQuest != null)
             {
                 Debug.LogWarning("Previous quest was still active. Stopping Quest " + currentQuest.name);
                 EndQuest();
-                //return false;
             }
 
             Quest newQuest = Instantiate(quest, transform);
@@ -42,9 +41,9 @@ namespace SADungeon.Quest
             Debug.Log("Started quest: " + currentQuest.name);
             
             onQuestInit?.Invoke(newQuest);
-
-            return true;
         }
+
+        public void ProgressCurrentQuest() => currentQuest.ProgressQuest(1);
 
         public void EndQuest()
         {

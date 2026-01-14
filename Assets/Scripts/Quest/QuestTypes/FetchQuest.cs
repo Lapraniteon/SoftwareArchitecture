@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SADungeon.Inventory;
@@ -16,6 +17,9 @@ namespace SADungeon.Quest
 
         protected override void Init()
         {
+            if (SingletonPlayerInventoryController.Instance == null)
+                return;
+            
             SingletonPlayerInventoryController.Instance.inventory.onItemUpdated += OnInventoryUpdated;
 
             itemToCollect = itemToCollectData.CreateItem();
@@ -25,6 +29,9 @@ namespace SADungeon.Quest
 
         protected override void Kill()
         {
+            if (SingletonPlayerInventoryController.Instance == null)
+                return;
+            
             SingletonPlayerInventoryController.Instance.inventory.onItemUpdated -= OnInventoryUpdated;
         }
 

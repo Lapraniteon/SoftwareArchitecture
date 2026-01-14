@@ -17,13 +17,13 @@ namespace SADungeon.Quest
         protected override void Init()
         {
             enemyToDefeat = enemyToDefeatData.CreateEnemy();
-            
+
             //OnInventoryUpdated(); // Check initial quest state
         }
 
         protected override void Kill()
         {
-            
+
         }
 
         public void OnEnemyDefeated(EventData eventData)
@@ -31,13 +31,12 @@ namespace SADungeon.Quest
 
             if (completed)
                 return;
-            
+
             EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
 
             if (enemyDieEventData.enemy.Id == enemyToDefeatData.id)
             {
-                _currentAmount++;
-                BroadcastProgressQuest(this);
+                ProgressQuest(1);
             }
 
             if (_currentAmount >= amountToDefeat)
@@ -47,6 +46,11 @@ namespace SADungeon.Quest
             }
         }
 
+        public override void ProgressQuest(int amount)
+        {
+            _currentAmount += amount;
+            BroadcastProgressQuest(this);
+        }
 
         public override string ToDisplayString()
         {
