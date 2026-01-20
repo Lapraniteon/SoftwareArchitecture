@@ -96,10 +96,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
       propertyPath: attackRange
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
       propertyPath: alertModeSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}
+      propertyPath: normalModeSpeed
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1499024023877420842, guid: 0da6ec2b2c60a274fb21ad0d7d1727b4, type: 3}

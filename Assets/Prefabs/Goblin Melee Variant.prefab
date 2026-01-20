@@ -53,10 +53,6 @@ PrefabInstance:
       value: Goblin Melee Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4268472261902986800, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
-      propertyPath: chaseRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4268472261902986800, guid: 55cce9dab4fee2d44bfcdbbe7a17844c, type: 3}
       propertyPath: attackRange
       value: 4
       objectReference: {fileID: 0}

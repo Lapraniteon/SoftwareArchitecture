@@ -3699,7 +3699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746142830648957521, guid: 7520ba0bfb3c6184196d66653001a129, type: 3}
       propertyPath: chaseRange
-      value: 10
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746142830648957521, guid: 7520ba0bfb3c6184196d66653001a129, type: 3}
+      propertyPath: normalModeSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7994534837202749740, guid: 7520ba0bfb3c6184196d66653001a129, type: 3}
       propertyPath: m_LocalPosition.x
