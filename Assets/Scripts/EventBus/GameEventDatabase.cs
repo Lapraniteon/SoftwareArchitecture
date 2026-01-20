@@ -28,7 +28,6 @@ public class EnemyDieEventData : EventData
         {
             return "Event name: " + name + "\n" +
                    "Enemy died at position: " + enemyObject.transform.position + "\n"
-                    + "Enemy Droped Money: " + enemy.Money
                     + "\n" + "Enemy gave XP: " + enemy.XP;
         }
     }

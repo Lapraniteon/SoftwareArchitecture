@@ -11,14 +11,13 @@ namespace SADungeon.Player
     public class PlayerData : ScriptableObject
     {
         public int maxHP;
-        public int startingMoney;
         public int level;
 
         public LevelUpData[] nextLevelUpData;
 
         public Player CreatePlayer()
         {
-            return new Player(maxHP, startingMoney, level, nextLevelUpData);
+            return new Player(maxHP, level, nextLevelUpData);
         }
     }
 
@@ -27,8 +26,6 @@ namespace SADungeon.Player
     {
         public int MaxHP;
         public int currentHP;
-        public int Money => money;
-        private int money;
         public int currentXp;
 
         public int level;
@@ -37,11 +34,10 @@ namespace SADungeon.Player
         private LevelUpData[] nextLevelUpData;
 
 
-        public Player(int pMaxHP, int pMoney, int pLevel, LevelUpData[] pLevelUpData)
+        public Player(int pMaxHP, int pLevel, LevelUpData[] pLevelUpData)
         {
             MaxHP = pMaxHP;
             currentHP = pMaxHP;
-            money = pMoney;
             currentXp = 0;
             level = pLevel;
             nextLevelUpData = pLevelUpData;

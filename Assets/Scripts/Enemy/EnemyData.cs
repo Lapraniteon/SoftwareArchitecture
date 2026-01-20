@@ -15,7 +15,6 @@ namespace SADungeon.Enemy
         public string enemyName;
         public int maxHP;
         public float speed;
-        public int money;
         public int xp;
 
         public ItemData[] dropTable;
@@ -40,8 +39,6 @@ namespace SADungeon.Enemy
         public int currentHP;
         public float Speed => speed;
         private float speed;
-        public int Money => money;
-        private int money;
         public int XP => xp;
         private int xp;
 
@@ -55,7 +52,6 @@ namespace SADungeon.Enemy
             maxHP = enemyData.maxHP;
             currentHP = enemyData.maxHP;
             speed = enemyData.speed;
-            money = enemyData.money;
             xp = enemyData.xp;
             dropTable = enemyData.dropTable;
         }
