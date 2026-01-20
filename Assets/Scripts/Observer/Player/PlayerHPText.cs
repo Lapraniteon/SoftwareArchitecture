@@ -26,7 +26,7 @@ namespace SADungeon.Player
 
         private void UpdateHPText(Player player)
         {
-            hpText.text = $"HP: {player.currentHP} / {player.MaxHP}";
+            hpText.text = $"HP: {player.currentHP} / {player.maxHP}";
         }
     }
 }

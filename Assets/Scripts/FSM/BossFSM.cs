@@ -58,7 +58,6 @@ namespace SADungeon.FSM
             alignToState.transitions.Add(new Transition(alignToState.AlignedWithTarget, stompState));
 
             //When attack is over:
-            //Re-align to target
             stompState.transitions.Add(new Transition(stompState.FinishedAttacking, throwingRocksState));
             
             throwingRocksState.transitions.Add(new Transition(throwingRocksState.BehaviourDurationExceeded, idleState));

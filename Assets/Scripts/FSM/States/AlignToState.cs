@@ -8,7 +8,6 @@ namespace SADungeon.FSM
     /// </summary>
     public class AlignToState : State
     {
-        private Transform target;
         private Transform self;
         private Vector3 direction;
         private float rotationSpeed;

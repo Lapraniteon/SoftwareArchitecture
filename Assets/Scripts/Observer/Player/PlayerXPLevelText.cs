@@ -13,7 +13,7 @@ namespace SADungeon.Player
 
         protected override void OnPlayerInit(Player player)
         {
-            xpText.text = $"XP: {player.currentXp}/{player.NextLevelUpData[0].xpRequired}";
+            xpText.text = $"XP: {player.currentXP}/{player.NextLevelUpData[0].xpRequired}";
             levelText.text = GetLevelText(player);
         }
 
@@ -35,7 +35,7 @@ namespace SADungeon.Player
                 return $"XP: Max. level";
             }
 
-            return $"XP: {player.currentXp}/{player.NextLevelUpData[player.level - 1].xpRequired}";
+            return $"XP: {player.currentXP}/{player.NextLevelUpData[player.level - 1].xpRequired}";
         }
 
         private string GetLevelText(Player player)

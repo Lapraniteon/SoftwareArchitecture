@@ -12,7 +12,6 @@ namespace SADungeon.FSM
     /// </summary>
     public class AttackState : State
     {
-        private Transform target;
         private AttackData attackData;
         private AttackBehaviour attackBehaviour;
         private string targetTag;

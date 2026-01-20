@@ -11,6 +11,8 @@ namespace SADungeon.FSM
     /// </summary>
     public abstract class State
     {
+        protected Transform target;
+        
         public string stateName;
         public Action onEnter;
         public Action onExit;

@@ -25,10 +25,6 @@ namespace SADungeon.FSM
         public AttackData currentAttackData;
         [HideInInspector] public AttackBehaviour attackBehaviour;
 
-        #region "For enemies only"
-        [SerializeField]
-        private bool isEnemy = true;
-
         // The target Transform that the enemy may chase or attack
         [HideInInspector] public Transform target;
 
@@ -65,6 +61,5 @@ namespace SADungeon.FSM
 
             target = playerModel?.transform;
         }
-        #endregion
     }
 }

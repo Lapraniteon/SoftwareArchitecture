@@ -9,7 +9,6 @@ namespace SADungeon.FSM
     /// </summary>
     public class MoveToState : State
     {
-        private Transform target;
         private NavMeshAgent navMeshAgent;
         private float distanceThreshold;
         private float chaseRange;

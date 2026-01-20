@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.Serialization;
 
 namespace SADungeon.Player
 {
@@ -24,9 +25,9 @@ namespace SADungeon.Player
     [Serializable]
     public class Player
     {
-        public int MaxHP;
+        public int maxHP;
         public int currentHP;
-        public int currentXp;
+        public int currentXP;
 
         public int level;
 
@@ -36,9 +37,9 @@ namespace SADungeon.Player
 
         public Player(int pMaxHP, int pLevel, LevelUpData[] pLevelUpData)
         {
-            MaxHP = pMaxHP;
+            maxHP = pMaxHP;
             currentHP = pMaxHP;
-            currentXp = 0;
+            currentXP = 0;
             level = pLevel;
             nextLevelUpData = pLevelUpData;
         }

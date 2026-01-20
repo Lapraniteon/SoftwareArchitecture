@@ -10,7 +10,6 @@ namespace SADungeon.FSM
     {
         private float chaseRange;
         private Transform self;
-        private Transform target;
         private float idleTime;
         private float startTime;
 

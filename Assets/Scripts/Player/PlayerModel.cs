@@ -48,14 +48,14 @@ namespace SADungeon.Player
                 return;
             }
 
-            if (player.currentHP >= player.MaxHP) // Don't heal if already max health
+            if (player.currentHP >= player.maxHP) // Don't heal if already max health
                 return;
             
             if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItemData))
             {
                 // Healing was successful
                 player.currentHP += currentHealingItemData.healing;
-                if (player.currentHP > player.MaxHP) player.currentHP = player.MaxHP;
+                if (player.currentHP > player.maxHP) player.currentHP = player.maxHP;
                 Instantiate(healingVFX, transform.position, Quaternion.identity);
                 onPlayerHeal?.Invoke(player);
                 onPlayerHealthChanged?.Invoke(player);
@@ -91,16 +91,16 @@ namespace SADungeon.Player
         {
             if (player.level <= player.NextLevelUpData.Length)
             {
-                player.currentXp += amount;
+                player.currentXP += amount;
 
                 int previousLevel = player.level;
 
                 // Check for multiple level-ups if XP is enough
-                while (player.currentXp >= player.NextLevelUpData[player.level - 1].xpRequired)
+                while (player.currentXP >= player.NextLevelUpData[player.level - 1].xpRequired)
                 {
-                    player.currentXp -= player.NextLevelUpData[player.level - 1].xpRequired;
+                    player.currentXP -= player.NextLevelUpData[player.level - 1].xpRequired;
 
-                    player.MaxHP +=
+                    player.maxHP +=
                         player.NextLevelUpData[player.level - 1].baseHealthIncrease; // Increase player health
                     player.currentHP += player.NextLevelUpData[player.level - 1].baseHealthIncrease;
 
