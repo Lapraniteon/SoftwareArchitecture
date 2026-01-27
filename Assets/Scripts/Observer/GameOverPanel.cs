@@ -2,6 +2,10 @@ using System;
 using SADungeon.Player;
 using UnityEngine;
 
+/// <summary>
+/// Controls the logic in the Game Over UI panel.
+/// </summary>
+
 public class GameOverPanel : MonoBehaviour
 {
 

@@ -7,34 +7,49 @@ namespace SADungeon.Enemy
 {
 
     /// <summary>
-    /// Simple enemy controller that publish onEnemyCreated and onHit events when
-    /// it's created and hit.
+    /// Enemy controller that implements an FSM to control its behaviour and publishes events on creation and hit.
+    /// Also supports dynamic switching of attack behaviours.
     /// </summary>
     public class EnemyController : MonoBehaviour
     {
+        [Tooltip("The enemy's data to use.")]
         [SerializeField] private EnemyData enemyData;
         private Enemy enemy;
 
+        [Tooltip("Should the enemy implement a boss FSM or a regular enemy's FSM?")]
         [SerializeField] private bool isBoss;
         private EnemyFSM enemyFSM;
         private BossFSM bossFSM;
         
-        [SerializeField] 
         private NavMeshAgent navMeshAgent;
+        
+        [Tooltip("This enemy's operation data.")]
         [SerializeField] 
         private Blackboard blackboard;
 
+        /// <summary>
+        /// Fired when enemy instance is created before initialization.
+        /// </summary>
         public event Action<Enemy> onEnemyCreated;
+        
+        /// <summary>
+        /// Fired when an enemy's GetHit() method is called.
+        /// </summary>
         public event Action<Enemy> onHit;
 
         void Start()
         {
-            enemy = enemyData.CreateEnemy();
+            enemy = enemyData.CreateEnemy(); // Create enemy instance from enemy data.
             onEnemyCreated?.Invoke(enemy);
+            
+            navMeshAgent = GetComponent<NavMeshAgent>();
+
+            if (navMeshAgent == null)
+                Debug.LogWarning("No NavMeshAgent component attached! Disabling enemy.");
             
             blackboard.Initialize(navMeshAgent);
 
-            if (isBoss)
+            if (isBoss) // Initialize the relevant blackboard based on if the enemy is a boss or not.
             {
                 if (bossFSM == null)
                     bossFSM = new BossFSM(navMeshAgent, blackboard);
@@ -69,6 +84,10 @@ namespace SADungeon.Enemy
             onHit?.Invoke(enemy);
         }
 
+        /// <summary>
+        /// Destroys the current attack behaviour and switches to the passed in attack behaviour type.
+        /// </summary>
+        /// <param name="newBehaviour">The new attack behaviour.</param>
         public void SwitchAttackBehaviour(Type newBehaviour)
         {
             Destroy(blackboard.attackBehaviour);
@@ -83,6 +102,10 @@ namespace SADungeon.Enemy
             blackboard.attackBehaviour = newComponent;
         }
 
+        /// <summary>
+        /// Switch to a different AttackData, useful for changing damage amounts at runtime.
+        /// </summary>
+        /// <param name="newData"></param>
         public void SwitchAttackData(AttackData newData)
         {
             blackboard.currentAttackData = newData;

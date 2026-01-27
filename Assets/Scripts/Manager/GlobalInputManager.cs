@@ -2,6 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// A manager script that handles global input events.
+/// Unity's InputSystem does this way better, this is a basic implementation for this specific purpose.
+/// </summary>
+
 public class GlobalInputManager : MonoBehaviour
 {
     
@@ -9,6 +14,9 @@ public class GlobalInputManager : MonoBehaviour
     public UnityEvent onInventoryEnable = new();
     public UnityEvent onInventoryDisable = new();
 
+    /// <summary>
+    /// Fires when the heal button is pressed.
+    /// </summary>
     public static event Action onHealButtonPressed;
     
     private void Update()

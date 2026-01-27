@@ -7,7 +7,7 @@ namespace SADungeon.FSM
 {
 
     /// <summary>
-    /// A finite state machine that controls the enemy behaviour
+    /// A finite state machine that controls the boss behaviour.
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class BossFSM : FSM

@@ -6,7 +6,7 @@ namespace SADungeon.Player
 {
 
     /// <summary>
-    /// A ScriptableObject that creates Enemy objects(Factory pattern).
+    /// A ScriptableObject that stores the player's initialization data.
     /// </summary>
     [CreateAssetMenu(fileName = "PlayerData", menuName = "Scriptable Objects/PlayerData")]
     public class PlayerData : ScriptableObject

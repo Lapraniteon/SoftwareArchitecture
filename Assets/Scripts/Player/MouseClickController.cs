@@ -2,11 +2,16 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Handles mouse clicks and converts it into a point in world space for the player NavMeshAgent to navigate to.
+/// </summary>
+
 public class MouseClickController : MonoBehaviour
 {
     public Vector3 clickPosition;
     private Vector3 rayOrigin;
 
+    [Tooltip("The VFX to spawn at the click point.")]
     [SerializeField] private ParticleSystem clickIndicatorVFX;
 
     public UnityEvent<Vector3> onRaycastHit;
@@ -22,8 +27,9 @@ public class MouseClickController : MonoBehaviour
                 clickPosition = clickWorldPosition;
                 rayOrigin = mouseRay.origin;
                 
-                // Trigger an unity event to notify other scripts about the click here
                 Instantiate(clickIndicatorVFX, clickPosition, Quaternion.identity);
+                
+                // Trigger an unity event to notify other scripts about the click here
                 onRaycastHit.Invoke(clickPosition);
             } 
         } 

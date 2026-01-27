@@ -10,9 +10,6 @@ namespace SADungeon.Player
 
     public abstract class PlayerObserver : MonoBehaviour
     {
-        //[SerializeField]
-        //protected PlayerModel playerModel;
-
         protected void OnEnable()
         {
             PlayerModel.onPlayerInit += OnPlayerInit;

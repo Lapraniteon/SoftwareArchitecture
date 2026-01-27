@@ -5,10 +5,11 @@ using UnityEngine;
 
 namespace SADungeon.Inventory
 {
+    
     /// <summary>
-    /// A inventory class that uses Strategy pattern to quickly switch different sorting
-    /// methods for its items.
+    /// An Inventory instance that stores the player's inventory in a list, with methods to add and remove items.
     /// </summary>
+    
     public class Inventory : MonoBehaviour
     {
         // List of item data assets used to generate actual items at runtime.
@@ -19,13 +20,22 @@ namespace SADungeon.Inventory
         [SerializeReference]
         private List<Item> items;
 
+        /// <summary>
+        /// Fired when an item is added to the inventory.
+        /// </summary>
         public event Action<Item> onItemAdded;
+        /// <summary>
+        /// Fired when an item is removed from the inventory.
+        /// </summary>
         public event Action<Item> onItemRemoved;
+        /// <summary>
+        /// Fired when the inventory's contents are updated.
+        /// </summary>
         public event Action onItemUpdated;
 
         private void Awake()
         {
-            GenerateInventory();             // Create items based on itemDatas.
+            GenerateInventory(); // Create items based on itemDatas.
         }
 
         // Instantiates items based on the item data list.

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Attack behaviour that spawns and initializes a projectile.
+/// </summary>
+
 public class RangedAttackBehaviour : AttackBehaviour
 {
     
@@ -9,6 +13,6 @@ public class RangedAttackBehaviour : AttackBehaviour
     public override void Attack(Transform attacker, Transform target, AttackData attackData, string targetTag)
     {
         ProjectileController projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.SetUp(target, attackData, targetTag);
+        projectile.SetUp(target, attackData, targetTag); // Set the projectile target
     }
 }

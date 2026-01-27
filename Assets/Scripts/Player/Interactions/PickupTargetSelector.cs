@@ -3,11 +3,15 @@ using UnityEngine;
 
 namespace SADungeon.Player
 {
-
+    
+    /// <summary>
+    /// Class responsible for detecting and storing the pickups in range.
+    /// </summary>
+    
     public class PickupTargetSelector : TargetSelector
     {
 
-        public GroundPickup GetTarget() // Get targets for enemy types
+        public GroundPickup GetTarget() // // Return one of the GroundPickups currently in range.
         {
             if (targetsInRange.Count > 0)
                 return targetsInRange[0].GetComponent<GroundPickup>();
@@ -15,13 +19,13 @@ namespace SADungeon.Player
             return null;
         }
 
-        public void RemoveTarget(EventData eventData)
+        public void RemoveTarget(EventData eventData) // Remove target when item is picked up.
         {
             GroundPickupEventData groundPickupEventData = (GroundPickupEventData)eventData;
             targetsInRange.Remove(groundPickupEventData.pickupObject.transform);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other) // Add target when pickup enters range.
         {
             if (other.CompareTag("PickupItem"))
             {
@@ -30,7 +34,7 @@ namespace SADungeon.Player
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other) // Remove target when pickup leaves range.
         {
             if (other.CompareTag("PickupItem"))
             {

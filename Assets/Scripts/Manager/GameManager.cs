@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// A singleton GameManager that taakes care of a few global functions, such as handling player death and reloading the scene.
+/// </summary>
+
 public class GameManager : MonoBehaviour
 {
     

@@ -5,11 +5,13 @@ namespace SADungeon.Inventory
 {
     /// <summary>
     /// An item container that invoke the onGetItem action to
-    /// give an item, basicevent bus pattern implemention, which
-    /// will be introduced in bootcamp 3.
+    /// give an item.
     /// </summary>
     public class ItemContainer : MonoBehaviour
     {
+        /// <summary>
+        /// Fires when item gets picked up.
+        /// </summary>
         public static Action<ItemData> onGetItem;
         [SerializeField]
         public ItemData itemData;

@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.Animations;
 
+/// <summary>
+/// Helper script to make enemy health displays (mostly) face the camera.
+/// </summary>
+
 [RequireComponent(typeof(LookAtConstraint))]
 public class LookAtCamera : MonoBehaviour
 {

@@ -1,6 +1,10 @@
 using SADungeon.Player;
 using UnityEngine;
 
+/// <summary>
+/// Class responsible for processing player input to pick up items.
+/// </summary>
+
 [RequireComponent(typeof(PickupTargetSelector))]
 public class PickupController : MonoBehaviour
 {
@@ -21,7 +25,7 @@ public class PickupController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             currentTarget = targetSelector.GetTarget();
-            currentTarget?.PickupItem();
+            currentTarget?.PickupItem(); // If there is any target in range, pick it up.
         }
     }
 }

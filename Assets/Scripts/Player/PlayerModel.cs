@@ -8,26 +8,54 @@ using UnityEngine.Serialization;
 
 namespace SADungeon.Player
 {
-
+    
+    /// <summary>
+    /// Class responsible for handling internal player logic, such as XP and HP handling.
+    /// Also broadcasts many events based on player actions.
+    /// </summary>
+    
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerModel : MonoBehaviour
     {
+        [Tooltip("The PlayerData to initialize the player with.")]
         [SerializeField] private PlayerData playerInitData;
         private Player player;
 
+        /// <summary>
+        /// Fired when the player has finished initializing.
+        /// </summary>
         public static event Action<Player> onPlayerInit;
+        /// <summary>
+        /// Fired after the player has gained XP.
+        /// </summary>
         public static event Action<Player> onPlayerXPGained;
+        /// <summary>
+        /// Fired after the player has gotten hit.
+        /// </summary>
         public static event Action<Player> onPlayerHit;
+        /// <summary>
+        /// Fired when the player's health is 0 or below as a result of getting hit.
+        /// </summary>
         public static event Action<Player> onPlayerDead;
+        /// <summary>
+        /// Fired when the player's level has increased after getting XP.
+        /// </summary>
         public static event Action<Player> onPlayerLevelUp;
+        /// <summary>
+        /// Fired when the player has healed.
+        /// </summary>
         public static event Action<Player> onPlayerHeal;
+        /// <summary>
+        /// Fired when the player's health has changed.
+        /// </summary>
         public static event Action<Player> onPlayerHealthChanged;
 
         private NavMeshAgent navMeshAgent;
 
-        [FormerlySerializedAs("currentHealingItem")]
         [Header("Healing")]
+        [Tooltip("The healing item the player will use from the inventory to heal.")]
         [SerializeField] private ItemData currentHealingItemData;
+        [Tooltip("The VFX to spawn at the player position when the heal button is pressed.")]
         [SerializeField] private ParticleSystem healingVFX;
 
         private void OnEnable()
@@ -51,12 +79,14 @@ namespace SADungeon.Player
             if (player.currentHP >= player.maxHP) // Don't heal if already max health
                 return;
             
-            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItemData))
+            if (SingletonPlayerInventoryController.Instance.inventory.RemoveItem(currentHealingItemData)) // Remove one healing item from the inventory
             {
                 // Healing was successful
                 player.currentHP += currentHealingItemData.healing;
-                if (player.currentHP > player.maxHP) player.currentHP = player.maxHP;
-                Instantiate(healingVFX, transform.position, Quaternion.identity);
+                if (player.currentHP > player.maxHP) player.currentHP = player.maxHP; // Clamp player HP to max.
+                
+                Instantiate(healingVFX, transform.position, Quaternion.identity); // Spawn healing VFX
+                
                 onPlayerHeal?.Invoke(player);
                 onPlayerHealthChanged?.Invoke(player);
             }
@@ -64,7 +94,7 @@ namespace SADungeon.Player
 
         private void Start()
         {
-            player = playerInitData.CreatePlayer();
+            player = playerInitData.CreatePlayer(); // Create player instance from intializaton data.
 
             navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -78,7 +108,7 @@ namespace SADungeon.Player
 
         public void OnEnemyKilled(EventData eventData)
         {
-            // Only process XP if the hero hasn't reached the final level
+            // Only process XP if the player hasn't reached the final level yet.
             if (player.level <= player.NextLevelUpData.Length)
             {
                 EnemyDieEventData enemyDieEventData = (EnemyDieEventData)eventData;
@@ -89,7 +119,7 @@ namespace SADungeon.Player
 
         public void ProcessXP(int amount)
         {
-            if (player.level <= player.NextLevelUpData.Length)
+            if (player.level <= player.NextLevelUpData.Length) // If the player has not reached max. level.
             {
                 player.currentXP += amount;
 
@@ -120,14 +150,14 @@ namespace SADungeon.Player
             }
         }
 
-        public void GetHit(AttackData attackData)
+        public void GetHit(AttackData attackData) // Called by the attack behaviour that attacked the player.
         {
             player.currentHP -= attackData.damage;
 
             onPlayerHit?.Invoke(player);
             onPlayerHealthChanged?.Invoke(player);
 
-            if (player.currentHP <= 0f)
+            if (player.currentHP <= 0f) // Player is dead.
             {
                 onPlayerDead?.Invoke(player);
             }

@@ -4,11 +4,15 @@ using UnityEngine;
 
 namespace SADungeon.Player
 {
-
+    
+    /// <summary>
+    /// Class responsible for detecting and storing the enemies in range and passing a target to the attackBehaviour.
+    /// </summary>
+    
     public class EnemyTargetSelector : TargetSelector
     {
 
-        public EnemyController GetTarget() // Get targets for enemy types
+        public EnemyController GetTarget() // Return one of the targets currently in range.
         {
             if (targetsInRange.Count > 0)
                 return targetsInRange[0].GetComponent<EnemyController>();
@@ -28,7 +32,7 @@ namespace SADungeon.Player
                 targetsInRange.Add(target);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other) // Add a target to the list when it enters range.
         {
             if (other.CompareTag("Enemy"))
             {
@@ -37,7 +41,7 @@ namespace SADungeon.Player
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other) // Remove a target from the list when it leaves range.
         {
             if (other.CompareTag("Enemy"))
             {

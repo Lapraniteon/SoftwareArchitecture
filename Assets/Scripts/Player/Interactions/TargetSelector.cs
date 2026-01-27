@@ -3,8 +3,14 @@ using UnityEngine;
 
 namespace SADungeon.Player
 {
-    public class TargetSelector : MonoBehaviour
+    
+    /// <summary>
+    /// Abstract class for different types of target selectors.
+    /// </summary>
+    
+    public abstract class TargetSelector : MonoBehaviour
     {
+        [Tooltip("The targets currently in range.")]
         [SerializeField] protected List<Transform> targetsInRange = new();
     }
 }

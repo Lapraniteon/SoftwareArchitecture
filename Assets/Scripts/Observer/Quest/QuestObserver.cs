@@ -4,6 +4,10 @@ using UnityEngine;
 namespace SADungeon.Quest
 {
 
+    /// <summary>
+    /// Abstract class for scripts that need to observe Quest status. Quest's notify their events and this script captures them.
+    /// </summary>
+    
     public abstract class QuestObserver : MonoBehaviour
     {
 

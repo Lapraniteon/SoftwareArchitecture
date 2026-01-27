@@ -4,14 +4,21 @@ using SADungeon.Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// A enemy spawning system that spawns a prefab either on request or in a coroutine that can be triggered manually or onTriggerEnter.
+/// </summary>
+
 public class EnemySpawner : MonoBehaviour
 {
 
     [Header("Spawning")]
+    [Tooltip("The enemy prefab to spawn.")]
     [SerializeField]
     private EnemyController enemyPrefabToSpawn;
+    [Tooltip("The amount of enemies to spawn per wave.")]
     [SerializeField] 
     private int spawnAmountPerWave;
+    [Tooltip("Time in seconds between each wave.")]
     [SerializeField]
     private float timeBetweenWaves;
 
@@ -19,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] [NaughtyAttributes.ReadOnly]
     private bool _isSpawning;
     
-    // Radii inbetween which to spawn
+    [Tooltip("Radii inbetween which to spawn")]
     [Header("Spawning Area")]
     [SerializeField]
     private float innerRadius;
@@ -29,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
     private bool _spawnEnemies = true;
 
     [Header("Control")] 
+    [Tooltip("Should enemies start spawning automatically on object start?")]
     [SerializeField]
     private bool beginSpawningOnStart = true;
 
@@ -68,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
         _isSpawning = false;
     }
 
-    private IEnumerator EnemySpawnCoroutine()
+    private IEnumerator EnemySpawnCoroutine() // Spawn a wave of enemies every [timeBetweenWaves] seconds.
     {
         while (_isSpawning)
         {
@@ -78,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void Spawn(int amount)
+    private void Spawn(int amount) // Spawn a specified amount of enemies around the spawner.
     {
         if (!_spawnEnemies)
             return;
@@ -87,13 +95,13 @@ public class EnemySpawner : MonoBehaviour
         
         for (int i = 0; i < amount; i++)
         {
-            Vector2 position = Random.insideUnitCircle * Random.Range(innerRadius, outerRadius);
+            Vector2 position = Random.insideUnitCircle * Random.Range(innerRadius, outerRadius); // Randomize spawning position around origin.
             
             EnemyController enemy = Instantiate(enemyPrefabToSpawn, origin + new Vector3(position.x, 0f, position.y), Quaternion.identity);
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // Debug draw inner and outer radii.
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, innerRadius);

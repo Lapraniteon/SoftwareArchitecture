@@ -8,7 +8,7 @@ namespace SADungeon.FSM
 {
 
     /// <summary>
-    /// A finite state machine that controls the enemy behaviour
+    /// A finite state machine that controls the rock-throwing behaviour as part of the boss behaviour.
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class ThrowingRocksFSM : FSM

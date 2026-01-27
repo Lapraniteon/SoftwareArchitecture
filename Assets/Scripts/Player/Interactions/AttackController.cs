@@ -3,7 +3,11 @@ using UnityEngine;
 
 namespace SADungeon.Player
 {
-
+    
+    /// <summary>
+    /// Class responsible for calling the attack method of the attached attackBehaviour.
+    /// </summary>
+    
     [RequireComponent(typeof(EnemyTargetSelector))]
     public class AttackController : MonoBehaviour
     {
@@ -12,6 +16,7 @@ namespace SADungeon.Player
 
         private EnemyController currentTarget;
 
+        [Tooltip("The AttackData to apply to the attack.")]
         [SerializeField] private AttackData attackData;
 
         private AttackBehaviour attackBehaviour;

@@ -33,6 +33,9 @@ public class EnemyDieEventData : EventData
     }
 }
 
+/// <summary>
+/// Published by GroundPickups when they get picked up.
+/// </summary>
 public class GroundPickupEventData : EventData
 {
     public Item item;
